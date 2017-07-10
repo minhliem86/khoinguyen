@@ -1,0 +1,53 @@
+ // SIDEBAR PANEL
+.sidebar-offcanvas{
+  z-index: 105;
+}
+.list-group-submenu{padding-left:15px}
+
+// PANEL BODY
+h3.panel-title{
+  font-weight: 600;
+  font-size:18px;
+}
+.panel-body{
+  height:700px;
+  overflow-y: scroll;
+  position: relative;
+}
+.panel-body-dashboard{
+    padding:15px;
+}
+
+// EDIT PAGE
+.trick-img{
+  cursor:pointer;
+}
+
+
+// TABLE
+.inline-block-span{
+  display: inline-block;
+}
+
+
+// FOOTER
+.site-footer{
+  z-index: 100;
+}
+
+/*CREATE ROLE*/
+#form-role{
+  fieldset{
+    margin-bottom:30px;
+    legend{
+      color:white;
+      margin-bottom:20px;
+      padding-bottom: 10px;
+    }
+    input[type="text"], select, textarea{
+      background:white;
+      font-size:12px;
+      color:#373e4a
+    }
+  }
+}
