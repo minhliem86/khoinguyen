@@ -22,7 +22,7 @@ class CheckCanLoginMiddleware
         if(!$this->auth->check()) return redirect('/admin/login')->withErrors('You have to login firsrt.');
         if(!$this->auth->user()->can('login')){
             $this->auth->logout();
-            return redirect('/admin/login')->withErrors('You must login first.');
+            return redirect('/admin/login')->withErrors('You do not have permission.');
         }
         return $next($request);
     }
