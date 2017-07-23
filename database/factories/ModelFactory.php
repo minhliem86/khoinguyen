@@ -22,18 +22,39 @@ use Faker\Generator as Faker;
 //     ];
 // });
 
-$factory->define(App\Models\Project::class, function(Faker  $faker){
-  return [
-    'video_id' => str_random(6),
-    'title' => $faker->sentence(),
-    'description' => $faker->paragraph(),
-  ];
-});
+// $factory->define(App\Models\Project::class, function(Faker  $faker){
+//   return [
+//     'video_id' => str_random(6),
+//     'title' => $faker->sentence(),
+//     'description' => $faker->paragraph(),
+//   ];
+// });
 
 $factory->define(App\Models\Photo::class, function(Faker $faker){
     return [
         'title' => $faker->sentence(),
-        'img_url' => $faker->imageUrl(300,300,'cats'),
+        'img_url' => $faker->imageUrl(250,350,'cats'),
         'filename' => $faker->word().'.jpg',
     ];
+});
+
+$factory->define(App\Models\Category::class, function(Faker $faker){
+  return [
+    'title' => $faker->word,
+    'avatar_img' => $faker->imageUrl(300, 250),
+  ];
+});
+$factory->define(App\Models\Product::class, function(Faker $faker){
+  return [
+    'title' => $faker->word,
+    'description' => $faker->paragraph(),
+    'avatar_img' => $faker->imageUrl(300, 250),
+  ];
+});
+$factory->define('App\Models\Company', function(Faker $faker){
+  return [
+    'email' => $faker->email,
+    'address' => $faker->streetAddress,
+    'phone' => $faker->phoneNumber,
+  ];
 });
