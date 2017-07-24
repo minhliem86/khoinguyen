@@ -9,7 +9,7 @@ class Product extends Model
 {
     use CascadesDeletes;
     protected $cascadeDeletes  = ['photos'];
-    
+
     public $table = "products";
 
     protected $fillable = ['title','avatar_img','description', 'order', 'status', 'category_id'];
