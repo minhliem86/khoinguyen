@@ -29,7 +29,7 @@
     <div class="container">
       <form class="form-signin" role="form" action="{{url('/admin/login')}}" method="POST">
         {{Form::token()}}
-        <h3 class="form-signin-heading">Please sign in</h3>
+        <h3 class="form-signin-heading">ADMIN DASHBOARD</h3>
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon">
