@@ -9,4 +9,9 @@ class Photo extends Model
     public $table = "photos";
 
     protected $fillable = ['title', 'img_url', 'filename', 'order'];
+
+    public function photoable()
+    {
+      return $this->morphTo();
+    }
 }

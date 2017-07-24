@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTintucTranslationsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,12 @@ class CreateTintucTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tintuc_translations', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tintuc_id')->unsigned();
+            $table->string('page_name')->nullable();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
-            $table->string('slug')->nullable()->unique();
-            $table->string('locale')->index();
-            $table->foreign('tintuc_id')->references('id')->on('tintucs')->onDelete('cascade');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateTintucTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tintuc_translations');
+        Schema::drop('pages');
     }
 }

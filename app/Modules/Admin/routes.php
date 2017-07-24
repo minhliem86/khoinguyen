@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
       });
       //   PORFILE
       Route::get('/profile', ['as' => 'admin.profile.index', 'uses' => 'ProfileController@index']);
-      
+
         //   PROJECT
         Route::post('/project/deleteAll', ['as' => 'admin.project.deleteAll', 'uses' => 'ProjectController@deleteAll'  ]);
         Route::resource('/project', 'ProjectController');
@@ -47,5 +47,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
 
     });
   });
-
 });

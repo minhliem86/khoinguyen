@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTintucsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,13 @@ class CreateTintucsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tintucs', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('status')->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->text('messages')->nullable();
+            $table->boolean('readable')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTintucsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tintucs');
+        Schema::drop('contacts');
     }
 }

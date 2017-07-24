@@ -159,7 +159,7 @@
             var title = file.title == undefined ? "" : file.title;
             // var description = file.description == undefined ? "" : file.description;
             file._title = Dropzone.createElement('<input type="text" value="'+title+'" id="'+uni_field_id+'" name="title" placeholder="Title..." class="form-control" />');
-             file.previewElement.querySelector('.title').appendChild(file._title);
+            file.previewElement.querySelector('.title').appendChild(file._title);
           });
 
           // ADD MORE TITLE TO IMAGE WHEN SENDING

@@ -12,13 +12,15 @@ class DatabaseSeeder extends Seeder
      */
 
      protected $tables = [
-       'projects',
-       'photos'
+       'categories',
+       'products',
+       'photos',
+       'companies'
      ];
 
      protected $seeders = [
-       ProjectSeeder::class,
-       PhotoSeeder::class,
+       CategorySeeder::class,
+       CompanySeeder::class,
      ];
 
      private function truncateDatabase()
@@ -34,9 +36,9 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         // $this->call(UsersTableSeeder::class);
-        // if(\DB::connection()->getName() === 'mysql'){
-        //     $this->truncateDatabase();
-        // }
+        if(\DB::connection()->getName() === 'mysql'){
+            $this->truncateDatabase();
+        }
         foreach($this->seeders as $seeder){
           $this->call($seeder);
         }
