@@ -19,15 +19,25 @@ abstract class BaseRepository implements RestfulInterface{
   {
     return $this->model = app()->make($this->getModel() );
   }
+
+  /*
+  ** MAKE Eager Loading
+  */
+  public function make(array $with = [])
+  {
+      return $this->model->with($with);
+  }
   /**
  	 * GET ALL
  	 *
  	 * @param type
  	 * @return void
 	 */
-  public function all($columns = array('*'))
+  public function all($columns = array('*'), $with = [])
   {
-    return $this->model->all($columns);
+    $query = $this->make($with);
+    return $query->get($columns);
+
   }
 
   /**
@@ -47,10 +57,11 @@ abstract class BaseRepository implements RestfulInterface{
  	 * @param type
  	 * @return void
 	 */
-  public function find($id, $columns = array('*'))
+  public function find($id, $columns = array('*'), $with = [])
   {
     try {
-      return $this->model->findOrFail($id, $columns);
+        $query = $this->make($with);
+      return $query->findOrFail($id, $columns);
     } catch (ModelNotFoundException  $e) {
       return false;
     }
