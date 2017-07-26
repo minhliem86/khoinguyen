@@ -20,7 +20,7 @@
           <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="glyphicon glyphicon-user"></i> {{Auth::user()->name}} <b class="caret"></b></a>
           <ul role="menu" class="dropdown-menu">
             <li class="dropdown-header">Setting</li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{route('admin.profile.index')}}">Profile</a></li>
             <li class="divider"></li>
             <li ><a href="{{url('admin/logout')}}">Signout</a></li>
           </ul>
