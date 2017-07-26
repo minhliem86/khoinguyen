@@ -3,5 +3,5 @@
 @section('link',Html::link(url('admin/login'),'Add New',['class'=>'btn btn-primary']))
 
 @section('content')
- <p>DashBoard</p>
+ <p>DashBoardb</p>
 @endsection
