@@ -1,9 +1,9 @@
 @extends('Admin::layouts.main-layout')
 
 @section('link')
-    {{Html::link(route('admin.category.create'),'Add New',['class'=>'btn btn-primary'])}}
-    <button type="button" class="btn btn-danger" id="btn-remove-all">Remove All Selected</button>
-    <button type="button" class="btn btn-warning" id="btn-updateOrder">Update Order</button>
+    {{Html::link(route('admin.category.create'),'Add New',['class'=>'btn btn-primary btn-xs'])}}
+    <button type="button" class="btn btn-danger btn-xs" id="btn-remove-all">Remove All Selected</button>
+    <button type="button" class="btn btn-warning btn-xs" id="btn-updateOrder">Update Order</button>
 @stop
 
 @section('content')
@@ -22,9 +22,11 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>ID</th>
-              <th><i class="glyphicon glyphicon-search"></i> Category Name</th>
-              <th>&nbsp;</th>
+              <th width="5%">ID</th>
+              <th width="20%"><i class="glyphicon glyphicon-search"></i> Category Name</th>
+              <th width="20%">Photo</th>
+              <th width="10%">Order</th>
+              <th width="20%">&nbsp;</th>
             </tr>
           </thead>
         </table>
@@ -50,6 +52,7 @@
         var table = $('table').DataTable({
             processing: true,
             serverSide: true,
+            'order': [[0,false]],
             ajax:{
                 url:  '{!! route('admin.category.getData') !!}',
                 data: function(d){
@@ -57,11 +60,11 @@
                 }
             },
             columns: [
-               {data: 'id', name: 'id'},
-               {data: 'avatar_img', name: 'avatar_img'},
+               {data: 'id', name: 'id', 'orderable': false},
+               {data: 'title', name: 'category'},
+               {data: 'avatar_img', name: 'Avatar Photo', 'orderable': false},
                {data: 'order', name: 'order'},
-               {data: 'title', name: 'title'},
-               {data: 'action', name: 'action'}
+               {data: 'action', name: 'action', 'orderable': false}
            ],
            initComplete: function(){
                 var table_api = this.api();
@@ -75,7 +78,7 @@
                     alertify.confirm('You can not undo this action. Are you sure ?', function(e){
                         if(e){
                             $.ajax({
-                                'url':"{!!route('admin.category.deleteall')!!}",
+                                'url':"{!!route('admin.category.deleteAll')!!}",
                                 'data' : {arr: data,_token:$('meta[name="csrf-token"]').attr('content')},
                                 'type': "POST",
                                 'success':function(result){
@@ -112,19 +115,12 @@
                     })
                 })
            }
-
-
-            // 'ordering': false,
-            // "bLengthChange": true,
-            // "bFilter" : false,
-            // "searching": true
         });
         /*SELECT ROW*/
         $('table tbody').on('click','tr',function(){
           $(this).toggleClass('selected');
         })
-
-
+      });
       function confirm_remove(a){
           alertify.confirm('You can not undo this action. Are you sure ?', function(e){
               if(e){

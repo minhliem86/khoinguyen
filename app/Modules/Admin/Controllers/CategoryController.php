@@ -32,21 +32,23 @@ class CategoryController extends Controller
     public function getData(Request $request)
     {
         $cate = $this->cateRepo->all(['id', 'title', 'avatar_img', 'order', 'status']);
-        return Datatables::of($cate)->make(true);
-    //     ->addColumn('action', function($cate){
-    //         return '<a href="'.route('admin.category.edit', $cate->id).'" class="btn btn-info btn-xs"> Edit </a>
-    //         <form method="POST" action=" '.route('admin.category.destroy', $cate->id).' " accept-charset="UTF-8" class="inline">
-    //             <input name="_method" type="hidden" value="DELETE">
-    //             <input name="_token" type="hidden" value="'.csrf_token().'">
-    //                        <button class="btn  btn-danger btn-xs remove-btn" type="button" attrid=" '.route('admin.category.destroy', $cate->id).' " onclick="confirm_remove(this);" > Remove </button>
-    //        </form>' ;
-    //    })->addColumn('order', function($cate){
-    //        return "<input type='text' name='order' class='form-control' data-id= '".$cate->id."' value= '".$cate->order."' />";
-    //    })->filter(function($query) use ($request){
-    //        if ($request->has('name')) {
-    //            $query->where('title', 'like', "%{$request->get('name')}%");
-    //        }
-    //    })->setRowId('id')->make(true);
+        return Datatables::of($cate)
+        ->addColumn('action', function($cate){
+            return '<a href="'.route('admin.category.edit', $cate->id).'" class="btn btn-info btn-xs inline-block-span"> Edit </a>
+            <form method="POST" action=" '.route('admin.category.destroy', $cate->id).' " accept-charset="UTF-8" class="inline-block-span">
+                <input name="_method" type="hidden" value="DELETE">
+                <input name="_token" type="hidden" value="'.csrf_token().'">
+                           <button class="btn  btn-danger btn-xs remove-btn" type="button" attrid=" '.route('admin.category.destroy', $cate->id).' " onclick="confirm_remove(this);" > Remove </button>
+           </form>' ;
+       })->addColumn('order', function($cate){
+           return "<input type='text' name='order' class='form-control' data-id= '".$cate->id."' value= '".$cate->order."' />";
+       })->editColumn('avatar_img',function($cate){
+         return '<img src="'.$cate->avatar_img.'" width="120" class="img-responsive">';
+       })->filter(function($query) use ($request){
+           if ($request->has('name')) {
+               $query->where('categories.title', 'like', "%{$request->get('name')}%");
+           }
+       })->setRowId('id')->make(true);
     }
 
     /**
