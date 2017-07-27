@@ -9,24 +9,12 @@
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        <form method="POST" action="{{route('admin.project.store')}}" id="form" role="form" class="form-horizontal">
+        <form method="POST" action="{{route('admin.category.store')}}" id="form" role="form" class="form-horizontal">
           {{Form::token()}}
           <div class="form-group">
             <label class="col-md-2 control-label">Title</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Title" id="title" class="form-control" name="title">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Video ID</label>
-            <div class="col-md-10">
-              <input type="text" required="" placeholder="Video ID" id="subject" class="form-control" name="video_id">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Description</label>
-            <div class="col-md-10">
-              <textarea required="" class="form-control my-editor" placeholder="Description" rows="15" id="description" name="description"></textarea>
             </div>
           </div>
           <div class="form-group">

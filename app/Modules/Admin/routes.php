@@ -48,8 +48,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         /*CATEGORY*/
         Route::get('category/getData', ['as' => 'admin.category.getData', 'uses' => 'CategoryController@getData']);
         Route::post('category/deleteAll', ['as' => 'admin.category.deleteAll', 'uses' => 'CategoryController@deleteAll']);
+        Route::post('category/updateStatus', ['as' => 'admin.category.updateStatus', 'uses' => 'CategoryController@updateStatus']);
         Route::post('category/postAjaxUpdateOrder', ['as' => 'admin.category.postAjaxUpdateOrder', 'uses' => 'CategoryController@postAjaxUpdateOrder']);
         Route::resource('category', 'CategoryController');
+
+        /*PAGE*/
+        Route::get('page/getData', ['as' => 'admin.page.getData', 'uses' => 'PageController@getData']);
+        Route::post('page/deleteAll', ['as' => 'admin.page.deleteAll', 'uses' => 'PageController@deleteAll']);
+        Route::post('page/updateStatus', ['as' => 'admin.page.updateStatus', 'uses' => 'PageController@updateStatus']);
+        Route::post('page/postAjaxUpdateOrder', ['as' => 'admin.page.postAjaxUpdateOrder', 'uses' => 'PageController@postAjaxUpdateOrder']);
+        Route::resource('page', 'PageController');
     });
   });
 });

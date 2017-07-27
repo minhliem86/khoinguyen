@@ -26,6 +26,7 @@
               <th width="20%"><i class="glyphicon glyphicon-search"></i> Category Name</th>
               <th width="20%">Photo</th>
               <th width="10%">Order</th>
+              <th width="10%">Status</th>
               <th width="20%">&nbsp;</th>
             </tr>
           </thead>
@@ -52,7 +53,6 @@
         var table = $('table').DataTable({
             processing: true,
             serverSide: true,
-            'order': [[0,false]],
             ajax:{
                 url:  '{!! route('admin.category.getData') !!}',
                 data: function(d){
@@ -61,9 +61,10 @@
             },
             columns: [
                {data: 'id', name: 'id', 'orderable': false},
-               {data: 'title', name: 'category'},
+               {data: 'title', name: 'title'},
                {data: 'avatar_img', name: 'Avatar Photo', 'orderable': false},
                {data: 'order', name: 'order'},
+               {data: 'status', name: 'status'},
                {data: 'action', name: 'action', 'orderable': false}
            ],
            initComplete: function(){
@@ -109,7 +110,27 @@
                         success: function(rs){
                             if(rs.code == 200){
                                 location.reload(true);
-                                // console.log(rs.msg);
+                            }
+                        }
+                    })
+                })
+
+                $('input[name="status"]').change(function(){
+                    let value = 0;
+                    if($(this).is(':checked')){
+                        value = 1;
+                    }
+                    const id_item = $(this).data('id');
+                    console.log(id_item);
+                    $.ajax({
+                        url: "{{route('admin.category.updateStatus')}}",
+                        type : 'POST',
+                        data: {value: value, id: id_item, _token:$('meta[name="csrf-token"]').attr('content')},
+                        success: function(data){
+                            if(!data.error){
+                                alertify.success('Status changed !');
+                            }else{
+                                alertify.error('Fail changed !');
                             }
                         }
                     })
@@ -120,6 +141,7 @@
         $('table tbody').on('click','tr',function(){
           $(this).toggleClass('selected');
         })
+
       });
       function confirm_remove(a){
           alertify.confirm('You can not undo this action. Are you sure ?', function(e){

@@ -10,25 +10,11 @@
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        {{Form::model($inst, ['route'=>['admin.project.update',$inst->id], 'method'=>'put' ])}}
+        {{Form::model($inst, ['route'=>['admin.category.update',$inst->id], 'method'=>'put' ])}}
           <div class="form-group">
             <label class="col-md-2 control-label">Title</label>
             <div class="col-md-10">
-              {{Form::text('title',old('title'), ['class'=>'form-control', 'placeholder'=>'Tile'])}}
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Video ID</label>
-            <div class="col-md-10">
-              {{Form::text('video_id',old('video_id'), ['class'=>'form-control', 'placeholder'=>'Video ID'])}}
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Description</label>
-            <div class="col-md-10">
-              <textarea required="" class="form-control my-editor" placeholder="Description" rows="15" id="description" name="description">
-                  {!! old('description', $inst->description) !!}
-              </textarea>
+              {{Form::text('title',old('title'), ['class'=>'form-control', 'placeholder'=>'Title'])}}
             </div>
           </div>
           <div class="form-group">
@@ -57,7 +43,7 @@
                  </span>
                  {{Form::hidden('img_url',old('img_url'), ['class'=>'form-control', 'id'=>'thumbnail' ])}}
                 </div>
-                <img id="holder" style="margin-top:15px;max-height:100px;" src="{{asset('public/upload/'.$inst->img_url)}}">
+                <img id="holder" style="margin-top:15px;max-height:100px;" src="{{asset('public/upload/'.$inst->avatar_img)}}">
             </div>
           </div>
         </form>
@@ -78,10 +64,10 @@
     function submitForm(){
      $('form').submit();
     }
-    $(document).ready(function(){
-        $('radio[name="status"]').change(function(){
-            console.log('tet');
-        })
-    })
+    // $(document).ready(function(){
+    //     $('radio[name="status"]').change(function(){
+    //
+    //     })
+    // })
     </script>
 @stop
