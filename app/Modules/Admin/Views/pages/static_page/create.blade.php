@@ -4,13 +4,19 @@
     <button class="btn btn-primary" onclick="submitForm();">Save</button>
 @stop
 
-@section('title','Create Category')
+@section('title','Create Static Page')
 
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        <form method="POST" action="{{route('admin.category.store')}}" id="form" role="form" class="form-horizontal">
+        <form method="POST" action="{{route('admin.page.store')}}" id="form" role="form" class="form-horizontal">
           {{Form::token()}}
+          <div class="form-group">
+            <label class="col-md-2 control-label">Page Name</label>
+            <div class="col-md-10">
+              <input type="text" required="" placeholder="Page Name" id="page_name" class="form-control" name="page_name">
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Title</label>
             <div class="col-md-10">
@@ -18,17 +24,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Image:</label>
+            <label class="col-md-2 control-label">Content</label>
             <div class="col-md-10">
-                <div class="input-group">
-                 <span class="input-group-btn">
-                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                     <i class="fa fa-picture-o"></i> Choose
-                   </a>
-                 </span>
-                 <input id="thumbnail" class="form-control" type="hidden" name="img_url">
-                </div>
-                <img id="holder" style="margin-top:15px;max-height:100px;">
+              <textarea name="content" rows="15" class="form-control my-editor" ></textarea>
             </div>
           </div>
         </form>

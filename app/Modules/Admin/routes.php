@@ -56,7 +56,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         Route::get('page/getData', ['as' => 'admin.page.getData', 'uses' => 'PageController@getData']);
         Route::post('page/deleteAll', ['as' => 'admin.page.deleteAll', 'uses' => 'PageController@deleteAll']);
         Route::post('page/updateStatus', ['as' => 'admin.page.updateStatus', 'uses' => 'PageController@updateStatus']);
-        Route::post('page/postAjaxUpdateOrder', ['as' => 'admin.page.postAjaxUpdateOrder', 'uses' => 'PageController@postAjaxUpdateOrder']);
         Route::resource('page', 'PageController');
     });
   });

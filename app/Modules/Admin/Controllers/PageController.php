@@ -6,17 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\CategoryRepository;
+use App\Repositories\PageRepository;
 use App\Repositories\Eloquent\CommonRepository;
 use Datatables;
+use DB;
 
 class PageController extends Controller
 {
     protected $pageRepo;
     protected $common;
-    public function __construct(CategoryRepository $cate, CommonRepository $common)
+    public function __construct(PageRepository $page, CommonRepository $common)
     {
-        $this->pageRepo = $cate;
+        $this->pageRepo = $page;
         $this->common = $common;
     }
     /**
@@ -28,37 +29,32 @@ class PageController extends Controller
     {
         // $inst = $this->pageRepo->all();
 
-        return view('Admin::pages.category.index');
+        return view('Admin::pages.static_page.index');
     }
 
     public function getData(Request $request)
     {
-        $cate = $this->pageRepo->all(['id', 'title', 'avatar_img', 'order', 'status']);
-            return Datatables::of($cate)
-            ->addColumn('action', function($cate){
-                return '<a href="'.route('admin.category.edit', $cate->id).'" class="btn btn-info btn-xs inline-block-span"> Edit </a>
-                <form method="POST" action=" '.route('admin.category.destroy', $cate->id).' " accept-charset="UTF-8" class="inline-block-span">
+        $page = DB::table('pages')->select(['id','page_name', 'status']);
+            return Datatables::of($page)
+            ->addColumn('action', function($page){
+                return '<a href="'.route('admin.page.edit', $page->id).'" class="btn btn-info btn-xs inline-block-span"> Edit </a>
+                <form method="POST" action=" '.route('admin.page.destroy', $page->id).' " accept-charset="UTF-8" class="inline-block-span">
                     <input name="_method" type="hidden" value="DELETE">
                     <input name="_token" type="hidden" value="'.csrf_token().'">
-                               <button class="btn  btn-danger btn-xs remove-btn" type="button" attrid=" '.route('admin.category.destroy', $cate->id).' " onclick="confirm_remove(this);" > Remove </button>
+                               <button class="btn  btn-danger btn-xs remove-btn" type="button" attrid=" '.route('admin.page.destroy', $page->id).' " onclick="confirm_remove(this);" > Remove </button>
                </form>' ;
-           })->addColumn('order', function($cate){
-               return "<input type='text' name='order' class='form-control' data-id= '".$cate->id."' value= '".$cate->order."' />";
-           })->addColumn('status', function($cate){
-               $status = $cate->status ? 'checked' : '';
-               $cate_id =$cate->id;
+           })->addColumn('status', function($page){
+               $status = $page->status ? 'checked' : '';
+               $page_id =$page->id;
                return '
-                           <label class="toggle">
-                              <input type="checkbox" name="status" value="1" '.$status.'   data-id ="'.$cate_id.'">
-                              <span class="handle"></span>
-                            </label>
-                        ';
-           })->editColumn('avatar_img',function($cate){
-             return '<img src="'.$cate->avatar_img.'" width="120" class="img-responsive">';
-         })->filter(function($query) use ($request){
+                 <label class="toggle">
+                    <input type="checkbox" name="status" value="1" '.$status.'   data-id ="'.$page_id.'">
+                    <span class="handle"></span>
+                  </label>
+              ';
+           })->filter(function($query) use ($request){
             if (request()->has('name')) {
-
-                collect($query->where('title', 'like', "%{$request->input('name')}%"));
+                $query->where('page_name', 'like', "%{$request->input('name')}%");
             }
         })->setRowId('id')->make(true);
     }
@@ -70,7 +66,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('Admin::pages.category.create');
+        return view('Admin::pages.static_page.create');
     }
 
     /**
@@ -81,17 +77,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has('img_url')){
-            $img_url = $this->common->getPath($request->input('img_url'));
-        }
-        $order = $this->pageRepo->getOrder();
         $data = [
             'title' => $request->input('title'),
-            'avatar_img' => $img_url,
-            'order' => $order,
+            'page_name' => $request->input('page_name'),
+            'content' => $request->input('content'),
         ];
         $this->pageRepo->create($data);
-        return redirect()->route('admin.category.index')->with('success','Created !');
+        return redirect()->route('admin.static_page.index')->with('success','Created !');
     }
 
     /**
@@ -114,7 +106,7 @@ class PageController extends Controller
     public function edit($id)
     {
         $inst = $this->pageRepo->find($id);
-        return view('Admin::pages.category.edit', compact('inst'));
+        return view('Admin::pages.static_page.edit', compact('inst'));
     }
 
     /**
@@ -126,15 +118,14 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $img_url = $this->common->getPath($request->input('img_url'));
         $data = [
-                'title' => $request->input('title'),
-                'avatar_img' => $img_url,
-                'order' => $request->input('order'),
-                'status' => $request->input('status'),
+          'title' => $request->input('title'),
+          'page_name' => $request->input('page_name'),
+          'content' => $request->input('content'),
+          'status' => $request->input('status'),
         ];
         $this->pageRepo->update($data, $id);
-        return redirect()->route('admin.category.index')->with('success', 'Updated !');
+        return redirect()->route('admin.static_page.index')->with('success', 'Updated !');
     }
 
     /**

@@ -5,7 +5,7 @@
     <button class="btn btn-primary" onclick="submitForm();">Save Changes</button>
 @stop
 
-@section('title','Edit Category')
+@section('title','Create Project')
 
 @section('content')
     <div class="row">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Eloquent\CommonRepository;
 use Datatables;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -27,14 +28,15 @@ class CategoryController extends Controller
     public function index()
     {
         // $inst = $this->cateRepo->all();
-
+        // $cate = $this->cateRepo->all(['id', 'title', 'avatar_img', 'order', 'status']);
+        $cate = \DB::table('categories')->select(['id', 'title', 'avatar_img', 'order', 'status']);
+        // dd($cate);
         return view('Admin::pages.category.index');
     }
 
     public function getData(Request $request)
     {
-        $cate = $this->cateRepo->all(['id', 'title', 'avatar_img', 'order', 'status']);
-
+        $cate = DB::table('categories')->select(['id', 'title', 'avatar_img', 'order', 'status']);
             return Datatables::of($cate)
             ->addColumn('action', function($cate){
                 return '<a href="'.route('admin.category.edit', $cate->id).'" class="btn btn-info btn-xs inline-block-span"> Edit </a>
@@ -49,11 +51,11 @@ class CategoryController extends Controller
                $status = $cate->status ? 'checked' : '';
                $cate_id =$cate->id;
                return '
-                           <label class="toggle">
-                              <input type="checkbox" name="status" value="1" '.$status.'   data-id ="'.$cate_id.'">
-                              <span class="handle"></span>
-                            </label>
-                        ';
+                 <label class="toggle">
+                    <input type="checkbox" name="status" value="1" '.$status.'   data-id ="'.$cate_id.'">
+                    <span class="handle"></span>
+                  </label>
+              ';
            })->editColumn('avatar_img',function($cate){
              return '<img src="'.$cate->avatar_img.'" width="120" class="img-responsive">';
          })->filter(function($query) use ($request){
