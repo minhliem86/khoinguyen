@@ -49,10 +49,10 @@
             <div class="panel-heading">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-md-8 col-sm-7">
+                  <div class="col-md-6 col-sm-5">
                     <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a> @yield('title','Panel Title')</h3>
                   </div>
-                  <div class="col-md-4 col-sm-5" >
+                  <div class="col-md-6 col-sm-7" >
                     <div class="right-control-panel text-right">
                         @yield('link')
                     </div>

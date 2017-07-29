@@ -89,6 +89,7 @@ class CategoryController extends Controller
         $order = $this->cateRepo->getOrder();
         $data = [
             'title' => $request->input('title'),
+            'slug' => \LP_lib::unicode($request->input('title')),
             'avatar_img' => $img_url,
             'order' => $order,
         ];
@@ -131,6 +132,7 @@ class CategoryController extends Controller
         $img_url = $this->common->getPath($request->input('img_url'));
         $data = [
                 'title' => $request->input('title'),
+                'slug' => \LP_lib::unicode($request->input('title')),
                 'avatar_img' => $img_url,
                 'order' => $request->input('order'),
                 'status' => $request->input('status'),

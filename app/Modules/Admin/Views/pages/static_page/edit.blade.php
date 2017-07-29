@@ -5,12 +5,18 @@
     <button class="btn btn-primary" onclick="submitForm();">Save Changes</button>
 @stop
 
-@section('title','Create Project')
+@section('title','Edit Page')
 
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        {{Form::model($inst, ['route'=>['admin.category.update',$inst->id], 'method'=>'put' ])}}
+        {{Form::model($inst, ['route'=>['admin.page.update',$inst->id], 'method'=>'put' ])}}
+          <div class="form-group">
+            <label class="col-md-2 control-label">Page Name</label>
+            <div class="col-md-10">
+              {{Form::text('page_name',old('page_name'), ['class'=>'form-control', 'placeholder'=>'Page Name'])}}
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Title</label>
             <div class="col-md-10">
@@ -18,9 +24,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Order</label>
+            <label class="col-md-2 control-label">Content</label>
             <div class="col-md-10">
-              {{Form::text('order',old('order'), ['class'=>'form-control', 'placeholder'=>'order'])}}
+              <textarea name="content" rows="15" class="form-control my-editor" >{{$inst->content}}</textarea>
             </div>
           </div>
           <div class="form-group">
@@ -32,20 +38,7 @@
                 </label>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-2 control-label">Image:</label>
-            <div class="col-md-10">
-                <div class="input-group">
-                 <span class="input-group-btn">
-                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                     <i class="fa fa-picture-o"></i> Choose
-                   </a>
-                 </span>
-                 {{Form::hidden('img_url',old('img_url'), ['class'=>'form-control', 'id'=>'thumbnail' ])}}
-                </div>
-                <img id="holder" style="margin-top:15px;max-height:100px;" src="{{asset('public/upload/'.$inst->avatar_img)}}">
-            </div>
-          </div>
+
         </form>
       </div>
     </div>

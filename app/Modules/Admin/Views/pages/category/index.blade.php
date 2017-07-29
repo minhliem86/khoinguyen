@@ -1,9 +1,9 @@
 @extends('Admin::layouts.main-layout')
 
 @section('link')
-    {{Html::link(route('admin.category.create'),'Add New',['class'=>'btn btn-primary btn-xs'])}}
-    <button type="button" class="btn btn-danger btn-xs" id="btn-remove-all">Remove All Selected</button>
-    <button type="button" class="btn btn-warning btn-xs" id="btn-updateOrder">Update Order</button>
+    {{Html::link(route('admin.category.create'),'Add New',['class'=>'btn btn-primary'])}}
+    <button type="button" class="btn btn-danger" id="btn-remove-all">Remove All Selected</button>
+    <button type="button" class="btn btn-warning" id="btn-updateOrder">Update Order</button>
 @stop
 
 @section('title','Category Page');

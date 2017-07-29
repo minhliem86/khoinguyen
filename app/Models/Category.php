@@ -8,7 +8,7 @@ class Category extends Model
 {
     public $table = 'categories';
 
-    protected $fillable = ['title','avatar_img', 'order', 'status'];
+    protected $fillable = ['title','avatar_img', 'order', 'status', 'slug'];
 
     public function products(){
       return $this->hasMany('App\Models\Category');

@@ -79,11 +79,12 @@ class PageController extends Controller
     {
         $data = [
             'title' => $request->input('title'),
+            'slug' => \LP_lib::unicode($request->input('page_name')),
             'page_name' => $request->input('page_name'),
             'content' => $request->input('content'),
         ];
         $this->pageRepo->create($data);
-        return redirect()->route('admin.static_page.index')->with('success','Created !');
+        return redirect()->route('admin.page.index')->with('success','Created !');
     }
 
     /**
@@ -120,12 +121,13 @@ class PageController extends Controller
     {
         $data = [
           'title' => $request->input('title'),
+          'slug' => \LP_lib::unicode($request->input('page_name')),
           'page_name' => $request->input('page_name'),
           'content' => $request->input('content'),
           'status' => $request->input('status'),
         ];
         $this->pageRepo->update($data, $id);
-        return redirect()->route('admin.static_page.index')->with('success', 'Updated !');
+        return redirect()->route('admin.page.index')->with('success', 'Updated !');
     }
 
     /**

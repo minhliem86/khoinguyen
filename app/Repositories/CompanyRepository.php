@@ -11,5 +11,14 @@ class CompanyRepository extends BaseRepository implements RestfulInterface{
     {
         return Company::class;
     }
+
+    public function getFirst($data = [])
+    {
+      $inst = $this->model->first();
+      if($inst){
+        return false;
+      }
+      return $inst;
+    }
   // END
 }
