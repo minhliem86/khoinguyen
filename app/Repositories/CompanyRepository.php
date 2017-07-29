@@ -15,10 +15,15 @@ class CompanyRepository extends BaseRepository implements RestfulInterface{
     public function getFirst($data = [])
     {
       $inst = $this->model->first();
-      if($inst){
+      if(!$inst){
         return false;
       }
       return $inst;
+    }
+
+    public function firstOrCreate($data)
+    {
+      return $this->model->firstOrCreate($data);
     }
   // END
 }

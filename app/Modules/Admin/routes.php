@@ -57,6 +57,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         Route::post('page/deleteAll', ['as' => 'admin.page.deleteAll', 'uses' => 'PageController@deleteAll']);
         Route::post('page/updateStatus', ['as' => 'admin.page.updateStatus', 'uses' => 'PageController@updateStatus']);
         Route::resource('page', 'PageController');
+
+        /* COMPANY */
+        Route::any('company/{id?}', ['as' => 'admin.company.index', 'uses' => 'CompanyController@getInformation']);
     });
   });
 });
