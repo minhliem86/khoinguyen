@@ -139,6 +139,7 @@ class PageController extends Controller
     public function destroy($id)
     {
         $this->pageRepo->delete($id);
+        return redirect()->route('admin.page.index')->with('success','Deleted !');
     }
 
     /*DELETE ALL*/

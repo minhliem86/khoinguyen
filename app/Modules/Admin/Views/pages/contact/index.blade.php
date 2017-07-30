@@ -1,12 +1,10 @@
 @extends('Admin::layouts.main-layout')
 
 @section('link')
-    {{Html::link(route('admin.category.create'),'Add New',['class'=>'btn btn-primary'])}}
     <button type="button" class="btn btn-danger" id="btn-remove-all">Remove All Selected</button>
-    <button type="button" class="btn btn-warning" id="btn-updateOrder">Update Order</button>
 @stop
 
-@section('title','Category Page')
+@section('title','Customers')
 
 @section('content')
     @if(Session::has('error'))
@@ -25,9 +23,7 @@
           <thead>
             <tr>
               <th width="5%">ID</th>
-              <th width="20%"><i class="glyphicon glyphicon-search"></i> Category Name</th>
-              <th width="20%">Photo</th>
-              <th width="10%">Order</th>
+              <th width="20%"><i class="glyphicon glyphicon-search"></i> Customer's Name</th>
               <th width="10%">Status</th>
               <th width="20%">&nbsp;</th>
             </tr>
@@ -45,28 +41,27 @@
     <script src="{{asset('/public/assets/admin')}}/dist/js/plugins/datatables/jquery.dataTables.min.js"></script>
 
     <!-- ALERTIFY -->
-    <link rel="stylesheet" href="{{asset('/public/assets/admin')}}/dist/js/plugins/alertify/alertify.css">
     <link rel="stylesheet" href="{{asset('/public/assets/admin')}}/dist/js/plugins/alertify/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/public/assets/admin')}}/dist/js/plugins/alertify/alertify.css">
     <script type="text/javascript" src="{{asset('/public/assets/admin')}}/dist/js/plugins/alertify/alertify.js"></script>
     <script>
       $(document).ready(function(){
         hideAlert('.alert');
+
         // REMOVE ALL
         var table = $('table').DataTable({
             processing: true,
             serverSide: true,
             ajax:{
-                url:  '{!! route('admin.category.getData') !!}',
+                url:  '{!! route('admin.contact.getData') !!}',
                 data: function(d){
                     d.name = $('input[type="search"]').val();
                 }
             },
             columns: [
                {data: 'id', name: 'id', 'orderable': false},
-               {data: 'title', name: 'title'},
-               {data: 'avatar_img', name: 'Avatar Photo', 'orderable': false},
-               {data: 'order', name: 'order'},
-               {data: 'status', name: 'status'},
+               {data: 'fullname', name: 'fullname'},
+               {data: 'readable', name: 'readable'},
                {data: 'action', name: 'action', 'orderable': false}
            ],
            initComplete: function(){
@@ -81,7 +76,7 @@
                     alertify.confirm('You can not undo this action. Are you sure ?', function(e){
                         if(e){
                             $.ajax({
-                                'url':"{!!route('admin.category.deleteAll')!!}",
+                                'url':"{!!route('admin.contact.deleteAll')!!}",
                                 'data' : {arr: data,_token:$('meta[name="csrf-token"]').attr('content')},
                                 'type': "POST",
                                 'success':function(result){
@@ -93,47 +88,6 @@
                                     }
                                 }
                             });
-                        }
-                    })
-                })
-
-                $('#btn-updateOrder').click(function(){
-                    var rows_order = table_api.rows().data();
-                    var data_order = {};
-                    $('input[name="order"]').each(function(index){
-                        var id = $(this).data('id');
-                        var va = $(this).val();
-                        data_order[id] = va;
-                    });
-                    $.ajax({
-                        url: '{{route("admin.category.postAjaxUpdateOrder")}}',
-                        type:'POST',
-                        data: {data: data_order,  _token:$('meta[name="csrf-token"]').attr('content') },
-                        success: function(rs){
-                            if(rs.code == 200){
-                                location.reload(true);
-                            }
-                        }
-                    })
-                })
-
-                $('input[name="status"]').change(function(){
-                    let value = 0;
-                    if($(this).is(':checked')){
-                        value = 1;
-                    }
-                    const id_item = $(this).data('id');
-                    console.log(id_item);
-                    $.ajax({
-                        url: "{{route('admin.category.updateStatus')}}",
-                        type : 'POST',
-                        data: {value: value, id: id_item, _token:$('meta[name="csrf-token"]').attr('content')},
-                        success: function(data){
-                            if(!data.error){
-                                alertify.success('Status changed !');
-                            }else{
-                                alertify.error('Fail changed !');
-                            }
                         }
                     })
                 })

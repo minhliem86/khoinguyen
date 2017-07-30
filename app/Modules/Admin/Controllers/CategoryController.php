@@ -27,10 +27,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // $inst = $this->cateRepo->all();
-        // $cate = $this->cateRepo->all(['id', 'title', 'avatar_img', 'order', 'status']);
-        $cate = \DB::table('categories')->select(['id', 'title', 'avatar_img', 'order', 'status']);
-        // dd($cate);
         return view('Admin::pages.category.index');
     }
 
@@ -150,18 +146,19 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $this->cateRepo->delete($id);
+        return redirect()->route('admin.category.index')->with('success','Deleted !');
     }
 
     /*DELETE ALL*/
     public function deleteAll(Request $request)
     {
-        if(!$request->ajax()){
-            abort(404);
-        }else{
-             $data = $request->arr;
-             $response = $this->cateRepo->deleteAll($data);
-             return response()->json(['msg' => 'ok']);
-       }
+      if(!$request->ajax()){
+          abort(404);
+      }else{
+           $data = $request->arr;
+           $response = $this->cateRepo->deleteAll($data);
+           return response()->json(['msg' => 'ok']);
+      }
     }
 
     /*UPDATE ORDER*/

@@ -60,6 +60,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
 
         /* COMPANY */
         Route::any('company/{id?}', ['as' => 'admin.company.index', 'uses' => 'CompanyController@getInformation']);
+
+        /* CONTACT */
+        Route::get('contact/getData', ['as' => 'admin.contact.getData', 'uses' => 'ContactController@getData']);
+        Route::post('contact/deleteAll', ['as' => 'admin.contact.deleteAll', 'uses' => 'ContactController@deleteAll']);
+        Route::resource('contact', 'ContactController', [
+          'only' => ['index', 'show', 'destroy']
+        ]);
     });
   });
 });

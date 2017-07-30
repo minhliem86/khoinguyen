@@ -6,7 +6,7 @@
     <button type="button" class="btn btn-warning " id="btn-updateOrder">Update Order</button>
 @stop
 
-@section('title','Static Page');
+@section('title','Static Page')
 
 @section('content')
     @if(Session::has('error'))
