@@ -65,8 +65,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         Route::get('contact/getData', ['as' => 'admin.contact.getData', 'uses' => 'ContactController@getData']);
         Route::post('contact/deleteAll', ['as' => 'admin.contact.deleteAll', 'uses' => 'ContactController@deleteAll']);
         Route::resource('contact', 'ContactController', [
-          'only' => ['index', 'show', 'destroy']
+          'only' => ['index', 'show', 'destroy'],
         ]);
+
+        /*PRODUCT*/
+        Route::get('product/getData', ['as' => 'admin.product.getData', 'uses' => 'ProductController@getData']);
+        Route::post('product/deleteAll', ['as' => 'admin.product.deleteAll', 'uses' => 'ProductController@deleteAll']);
+        Route::post('product/updateStatus', ['as' => 'admin.product.updateStatus', 'uses' => 'ProductController@updateStatus']);
+        Route::post('product/postAjaxUpdateOrder', ['as' => 'admin.product.postAjaxUpdateOrder', 'uses' => 'ProductController@postAjaxUpdateOrder']);
+        Route::post('product/updateStatus', ['as' => 'admin.product.updateStatus', 'uses' => 'ProductController@updateStatus']);
+        Route::resource('product', 'ProductController');
     });
   });
 });

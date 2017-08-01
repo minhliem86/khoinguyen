@@ -6,6 +6,7 @@
     <li class="list-group-item"><a href="{{route('admin.category.index')}}"><i class="glyphicon glyphicon-certificate"></i>Category </a></li>
     <li class="list-group-item"><a href="{{route('admin.company.index')}}"><i class="glyphicon glyphicon-certificate"></i>Company's information </a></li>
     <li class="list-group-item"><a href="{{route('admin.contact.index')}}"><i class="glyphicon glyphicon-certificate"></i>Customers</a></li>
+    <li class="list-group-item"><a href="{{route('admin.product.index')}}"><i class="glyphicon glyphicon-certificate"></i>Product</a></li>
     <li class="list-group-item"><a href="{{route('admin.project.index')}}"><i class="glyphicon glyphicon-certificate"></i>Project </a></li>
     <li class="list-group-item"><a href="{{route('admin.photo.index')}}"><i class="glyphicon glyphicon-certificate"></i>Multi Photos </a></li>
 

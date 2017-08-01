@@ -53,6 +53,7 @@ class ContactController extends Controller
     public function show($id)
     {
       $inst = $this->contactRepo->find($id);
+      $this->contactRepo->update(['readable' => 1], $id);
       return view('Admin::pages.contact.edit', compact('inst'));
     }
 

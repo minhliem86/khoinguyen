@@ -12,25 +12,25 @@
           <div class="form-group">
             <label class="col-md-2 control-label">Customer's Name</label>
             <div class="col-md-10">
-              {{Form::text('fullname',old('fullname'), ['class'=>'form-control', 'placeholder'=>'Name', 'disabled'])}}
+                <p>{{$inst->fullname}}</p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Customer's Phone</label>
             <div class="col-md-10">
-              {{Form::text('phone',old($inst->phone), ['class'=>'form-control', 'placeholder'=>'Phone', 'disabled'])}}
+              <p>{{$inst->phone}}</p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Customer's Email</label>
             <div class="col-md-10">
-              {{Form::text('email',old($inst->email), ['class'=>'form-control', 'placeholder'=>'Email', 'disabled'])}}
+              <p>{{$inst->email}}</p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Customer's Messages</label>
             <div class="col-md-10">
-              {{Form::textarea('messages',old('messages'), ['class'=>'form-control', 'disabled'])}}
+              <p>{{$inst->messages}}</p>
             </div>
           </div>
           <div class="form-group">

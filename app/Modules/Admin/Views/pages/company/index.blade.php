@@ -48,7 +48,7 @@
           </div>
         </form>
         @else
-        {!!Form::model($inst,['route' =>['admin.company.index', $inst->id], 'method'=>'PUT', 'class'=>'form form-horizontal'])!!}
+        {{Form::model($inst,['route' =>['admin.company.index', $inst->id], 'method'=>'PUT', 'class'=>'form form-horizontal'])}}
           <div class="form-group">
             <label class="col-md-2 control-label">Company's Address</label>
             <div class="col-md-10">
@@ -73,7 +73,7 @@
               {{ Form::text('map',old($inst->map),['class'=>'form-control']) }}
             </div>
           </div>
-        {!!Form::close()!!}
+        {{Form::close()}}
         @endif
       </div>
     </div>
