@@ -79,7 +79,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->has('img_url')){
+            $img_url = $this->common->getPath($request->input('img_url'));
+        }
+        $order = $this->productRepo->getOrder();
+        $data = [
+            'title' => $request->input('title'),
+            'slug' => \LP_lib::unicode($request->input('title')),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'avatar_img' => $img_url,
+            'order' => $order,
+            'category_id' => 1,
+        ];
+        $this->productRepo->create($data);
+        return redirect()->route('admin.product.index')->with('success','Created !');
     }
 
     /**
@@ -114,7 +128,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $img_url = $this->common->getPath($request->input('avatar_img'));
+        $data = [
+                'title' => $request->input('title'),
+                'slug' => \LP_lib::unicode($request->input('title')),
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'category_id' => 1,
+                'avatar_img' => $img_url,
+                'order' => $request->input('order'),
+                'status' => $request->input('status'),
+        ];
+        $this->productRepo->update($data, $id);
+        return redirect()->route('admin.product.index')->with('success', 'Updated !');
     }
 
     /**
