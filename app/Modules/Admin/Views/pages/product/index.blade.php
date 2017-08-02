@@ -67,7 +67,7 @@
                {data: 'title', name: 'title'},
                {data: 'avatar_img', name: 'Avatar Photo', 'orderable': false},
                {data: 'order', name: 'order'},
-               {data: 'status', name: 'status'},
+               {data: 'status', name: 'status', 'orderable': false},
                {data: 'action', name: 'action', 'orderable': false}
            ],
            initComplete: function(){

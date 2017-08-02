@@ -4,17 +4,29 @@
     <button class="btn btn-primary" onclick="submitForm();">Save</button>
 @stop
 
-@section('title','Create Category')
+@section('title','Create Product')
 
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        <form method="POST" action="{{route('admin.category.store')}}" id="form" role="form" class="form-horizontal">
+        <form method="POST" action="{{route('admin.product.store')}}" id="form" role="form" class="form-horizontal">
           {{Form::token()}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Title</label>
+            <label class="col-md-2 control-label">Product Name</label>
             <div class="col-md-10">
-              <input type="text" required="" placeholder="Title" id="title" class="form-control" name="title">
+              {{Form::text('title',old('title'), ['class'=>'form-control', 'placeholder'=>'Title'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+                {{Form::textarea('description',old('description'), ['class'=>'form-control my-editor', 'placeholder' => 'Description'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Product Price</label>
+            <div class="col-md-10">
+              {{Form::text('price',old('price'), ['class'=>'form-control', 'placeholder'=>'Price'])}}
             </div>
           </div>
           <div class="form-group">

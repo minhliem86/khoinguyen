@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
+use App\Repositories\Eloquent\CommonRepository;
 use Datatables;
 use DB;
 
 class ProductController extends Controller
 {
     protected $productRepo;
+    protected $common;
 
-    public function __construct(ProductRepository $product)
+    public function __construct(ProductRepository $product, CommonRepository $common)
     {
         $this->productRepo = $product;
+        $this->common = $common;
     }
     /**
      * Display a listing of the resource.
