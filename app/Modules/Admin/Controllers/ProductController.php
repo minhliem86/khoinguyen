@@ -30,7 +30,7 @@ class ProductController extends Controller
 
     public function getData(Request $request)
     {
-        $product = DB::table('products')->join('products', 'products.category_id', '=','categories.id')->select(['products.id', 'products.title', 'products.avatar_img', 'products.price', 'products.order', 'products.status']);
+        $product = DB::table('products')->join('categories', 'products.category_id', '=','categories.id')->select(['products.id', 'products.title', 'products.avatar_img', 'products.price', 'products.order', 'products.status']);
 
         return Datatables::of($product)
         ->addColumn('action', function($product){
@@ -55,7 +55,7 @@ class ProductController extends Controller
           return '<img src="'.$product->avatar_img.'" width="120" class="img-responsive">';
         })->filter(function($query) use ($request){
            if (request()->has('name')) {
-               $query->where('title', 'like', "%{$request->input('name')}%");
+               $query->where('products.title', 'like', "%{$request->input('name')}%");
            }
        })->setRowId('id')->make(true);
 

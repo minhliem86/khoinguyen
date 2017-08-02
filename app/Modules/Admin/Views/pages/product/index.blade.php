@@ -50,6 +50,7 @@
     <script type="text/javascript" src="{{asset('/public/assets/admin')}}/dist/js/plugins/alertify/alertify.js"></script>
     <script>
       $(document).ready(function(){
+
         hideAlert('.alert');
         // REMOVE ALL
         var table = $('table').DataTable({
@@ -158,5 +159,6 @@
               $(a).fadeOut();
           },2000)
       }
+
     </script>
 @stop
