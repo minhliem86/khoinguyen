@@ -26,9 +26,9 @@
             <tr>
               <th width="5%">ID</th>
               <th width="20%"><i class="glyphicon glyphicon-search"></i> Category Name</th>
-              <th width="20%">Photo</th>
-              <th width="10%">Order</th>
-              <th width="10%">Status</th>
+              <th width="20%">Hình ảnh</th>
+              <th width="10%">Sắp xếp</th>
+              <th width="10%">Trạng thái</th>
               <th width="20%">&nbsp;</th>
             </tr>
           </thead>

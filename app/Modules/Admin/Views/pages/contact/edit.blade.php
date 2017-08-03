@@ -10,25 +10,25 @@
     <div class="row">
       <div class="col-sm-12">
           <div class="form-group">
-            <label class="col-md-2 control-label">Customer's Name</label>
+            <label class="col-md-2 control-label">Tên khách hàng</label>
             <div class="col-md-10">
                 <p>{{$inst->fullname}}</p>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Customer's Phone</label>
+            <label class="col-md-2 control-label">Điện thoại khách hàng</label>
             <div class="col-md-10">
               <p>{{$inst->phone}}</p>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Customer's Email</label>
+            <label class="col-md-2 control-label">Email khách hàng</label>
             <div class="col-md-10">
               <p>{{$inst->email}}</p>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Customer's Messages</label>
+            <label class="col-md-2 control-label">Nội dung</label>
             <div class="col-md-10">
               <p>{{$inst->messages}}</p>
             </div>

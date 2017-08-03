@@ -23,25 +23,25 @@
         <form method="POST" action="{{route('admin.company.index')}}" id="form" role="form" class="form-horizontal form">
           {{Form::token()}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Address</label>
+            <label class="col-md-2 control-label">Địa chỉ</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Address" id="address" class="form-control" name="address">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Email</label>
+            <label class="col-md-2 control-label">Email</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Email" id="email" class="form-control" name="email">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Phone Number</label>
+            <label class="col-md-2 control-label">Điện thoại</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Phone Number" id="phone" class="form-control" name="phone">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Map</label>
+            <label class="col-md-2 control-label">Bản đồ</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Map" id="map" class="form-control" name="map">
             </div>
@@ -50,25 +50,25 @@
         @else
         {{Form::model($inst,['route' =>['admin.company.index', $inst->id], 'method'=>'PUT', 'class'=>'form form-horizontal'])}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Address</label>
+            <label class="col-md-2 control-label">Địa chỉ</label>
             <div class="col-md-10">
               {{Form::text('address',old($inst->address),['class'=>'form-control', 'placeholder'=>'Address', 'required'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Email</label>
+            <label class="col-md-2 control-label">Email</label>
             <div class="col-md-10">
               {{Form::text('email',old($inst->email),['class'=>'form-control', 'placeholder'=>'Email', 'required'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Phone Number</label>
+            <label class="col-md-2 control-label">Điện thoại</label>
             <div class="col-md-10">
               {{Form::text('phone',old($inst->phone),['class'=>'form-control', 'placeholder'=>'Phone', 'required'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Company's Map</label>
+            <label class="col-md-2 control-label">Bản đồ</label>
             <div class="col-md-10">
               {{ Form::text('map',old($inst->map),['class'=>'form-control']) }}
             </div>

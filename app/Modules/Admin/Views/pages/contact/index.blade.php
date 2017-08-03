@@ -23,8 +23,8 @@
           <thead>
             <tr>
               <th width="5%">ID</th>
-              <th width="20%"><i class="glyphicon glyphicon-search"></i> Customer's Name</th>
-              <th width="10%">Status</th>
+              <th width="20%"><i class="glyphicon glyphicon-search"></i> Tên khách hàng</th>
+              <th width="10%">Trạng thái(đã đọc/chưa đọc)</th>
               <th width="20%">&nbsp;</th>
             </tr>
           </thead>

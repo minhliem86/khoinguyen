@@ -12,18 +12,18 @@
         <form method="POST" action="{{route('admin.category.store')}}" id="form" role="form" class="form-horizontal">
           {{Form::token()}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Title</label>
+            <label class="col-md-2 control-label">Tiêu đề</label>
             <div class="col-md-10">
               <input type="text" required="" placeholder="Title" id="title" class="form-control" name="title">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Image:</label>
+            <label class="col-md-2 control-label">Hình đại diện:</label>
             <div class="col-md-10">
                 <div class="input-group">
                  <span class="input-group-btn">
                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                     <i class="fa fa-picture-o"></i> Choose
+                     <i class="fa fa-picture-o"></i> Chọn
                    </a>
                  </span>
                  <input id="thumbnail" class="form-control" type="hidden" name="img_url">

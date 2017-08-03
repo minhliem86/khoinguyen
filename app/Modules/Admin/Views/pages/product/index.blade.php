@@ -25,10 +25,11 @@
           <thead>
             <tr>
               <th width="5%">ID</th>
-              <th width="20%"><i class="glyphicon glyphicon-search"></i> Product Name</th>
-              <th width="20%">Photo</th>
-              <th width="10%">Order</th>
-              <th width="10%">Status</th>
+              <th width="20%"><i class="glyphicon glyphicon-search"></i> Sản phẩm</th>
+              <th width="20%">Hình đại diện</th>
+              <th width="10%">Sắp xếp</th>
+              <th width="10%">Trạng thái</th>
+              <th width="10%">Nổi bật</th>
               <th width="20%">&nbsp;</th>
             </tr>
           </thead>
@@ -68,6 +69,7 @@
                {data: 'avatar_img', name: 'Avatar Photo', 'orderable': false},
                {data: 'order', name: 'order'},
                {data: 'status', name: 'status', 'orderable': false},
+               {data: 'hot', name: 'hot', 'orderable': false},
                {data: 'action', name: 'action', 'orderable': false}
            ],
            initComplete: function(){
