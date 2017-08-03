@@ -19,8 +19,8 @@
     <div class="main-content">
       <div class="container">
         @include('Front::layouts.banner')
-
-        @yield('content')
+            
+            @yield('content')
 
         @include('Front::layouts.footer')
       </div>
