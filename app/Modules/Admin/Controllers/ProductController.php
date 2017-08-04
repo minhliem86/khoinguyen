@@ -215,4 +215,8 @@ class ProductController extends Controller
             ], 200);
         }
     }
+    public function processUpload(Request $request)
+    {
+        
+    }
 }

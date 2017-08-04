@@ -3,31 +3,33 @@
 @section('content')
     @include('Front::layouts.banner')
     <div class="row">
-		   <div class="col-md-3 left-menu">
-          <div class="wrap-left-menu">
-              <div class="box">
-                <h3 class="title-box">Sản Phẩm nổi bật</h3>
-                <div class="content-box">
-                    <div class="swiper-container swiper-product">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+	   <div class="col-md-3 left-menu">
+              <div class="wrap-left-menu">
+                  <div class="box">
+                    <h3 class="title-box">Sản Phẩm nổi bật</h3>
+                    <div class="content-box">
+                        <div class="swiper-container swiper-product">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+                            </div>
+                          </div>
                         </div>
-                        <div class="swiper-slide">
-                          <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
-                        </div>
-                      </div>
                     </div>
-                </div>
-              </div>
-              <div class="box">
-                <h3 class="title-box">Hỗ Trợ Khách Hàng</h3>
-                <div class="content-box">
-
-                </div>
-              </div>
-          </div>    <!-- end wrap-left-menu-->
-			</div>    <!-- end left-menu-->
+                  </div>
+              </div>    <!-- end wrap-left-menu-->
+              <div class="wrap-left-menu">
+                  <div class="box">
+                    <h3 class="title-box">Hỗ Trợ Khách Hàng</h3>
+                    <div class="content-box">
+                        
+                    </div>
+                  </div>
+              </div>    <!-- end wrap-left-menu-->
+		</div>    <!-- end left-menu-->
 
   		<div class="col-md-9">
 

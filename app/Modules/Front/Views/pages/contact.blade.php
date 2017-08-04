@@ -14,22 +14,24 @@
 <div class="row">
   <div class="col-md-6">
     <div class="contact_form">
-      <form>
+      <form action="" method="POST" class="form">
+          {{ csrf_field() }}
         <fieldset class="form-group">
-          <label>Name<span class="required">*</span></label>
-          <input type="text" placeholder="Name" class="form-control">
+          <label>Tên Khách Hàng<span class="required">*</span></label>
+          <input type="text" placeholder="fullname" class="form-control">
+          <label>Điện thoại<span class="required">*</span></label>
+          <input type="text" placeholder="phone" class="form-control">
           <label>Email<span class="required">*</span></label>
           <input type="text" placeholder="Email" class="form-control">
-          <label>Subject<span class="required">*</span></label>
-          <input type="text" placeholder="Subject" class="form-control">
+
         </fieldset>
       </form>
       <div class="form-group">
-        <label>Message<span class="required">*</span></label>
+        <label>Lời Nhắn<span class="required">*</span></label>
         <textarea rows="3" class="form-control"></textarea>
       </div>
       <p class="form-group">
-        <button class="btn btn-primary" type="button">Send Request</button>
+        <button class="btn btn-primary" type="submit">Gửi</button>
       </p>
     </div>
   </div>

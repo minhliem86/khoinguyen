@@ -12,13 +12,13 @@
       <div class="col-sm-12">
         {{Form::model($inst, ['route'=>['admin.product.update',$inst->id], 'method'=>'put' ])}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Product Name</label>
+            <label class="col-md-2 control-label">Sản phẩm</label>
             <div class="col-md-10">
               {{Form::text('title',old('title'), ['class'=>'form-control', 'placeholder'=>'Title'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Description</label>
+            <label class="col-md-2 control-label">Mô tả</label>
             <div class="col-md-10">
                 <textarea required="" class="form-control my-editor" placeholder="Description" rows="15" id="description" name="description">
                     {!! old('description', $inst->description) !!}
@@ -26,19 +26,19 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Product Price</label>
+            <label class="col-md-2 control-label">Giá</label>
             <div class="col-md-10">
               {{Form::text('price',old('price'), ['class'=>'form-control', 'placeholder'=>'Price'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Order</label>
+            <label class="col-md-2 control-label" for="description">Sắp xếp</label>
             <div class="col-md-10">
               {{Form::text('order',old('order'), ['class'=>'form-control', 'placeholder'=>'order'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Status</label>
+            <label class="col-md-2 control-label" for="description">Trạng thái</label>
             <div class="col-md-10">
                 <label class="toggle">
                   <input type="checkbox" name="status" value="1" {{$inst->status == 1 ? 'checked' : '' }}  >
@@ -47,12 +47,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Image:</label>
+            <label class="col-md-2 control-label">Hình ảnh:</label>
             <div class="col-md-10">
                 <div class="input-group">
                  <span class="input-group-btn">
                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                     <i class="fa fa-picture-o"></i> Choose
+                     <i class="fa fa-picture-o"></i> Chọn
                    </a>
                  </span>
                  {{Form::hidden('avatar_img',old('avatar_img'), ['class'=>'form-control', 'id'=>'thumbnail' ])}}
