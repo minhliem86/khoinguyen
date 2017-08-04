@@ -958,7 +958,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 .left-menu div.box
 {
-    margin-bottom:15px;
+    margin-bottom:25px;
 }
 
 .left-menu .banner
@@ -1031,7 +1031,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 	border:inherit;
 }
 .wrap-left-menu .box h3.title-box{
-    margin-bottom:15px;
+    margin-bottom:8px;
 }
 
 
@@ -1194,6 +1194,16 @@ ul.slides
   margin-top:40px;
 }
 
+.footer .col{
+  margin-top:40px;
+}
+.footer .col2 ul{
+  margin-bottom:20px
+}
+.footer .col2 ul.social{
+  margin:0;
+}
+
 
 .footer:hover
 {
@@ -1237,7 +1247,6 @@ ul.slides
     color:#555;
     font-family: 'Montserrat','Open sans', Helvetica, Arial;
     font-weight:400;
-    margin-top:50px;
     margin-bottom:20px;
     margin-left:0px;
     margin-right:0px;
@@ -1252,14 +1261,18 @@ ul.slides
 .footer li
 {
     padding-top:5px;
+    color:#fff;
+  	font-size:12px;
+  	font-family: 'Montserrat','Open sans', Helvetica, Arial;
+  	opacity:0.5;
 }
 
 .footer a
 {
 	color:#000;
-	font-size:11px;
+	font-size:12px;
 	font-family: 'Montserrat','Open sans', Helvetica, Arial;
-	opacity:0.5;
+	opacity:1;
 }
 
 .footer a:hover
@@ -1730,8 +1743,8 @@ ul.slides
 .box
 {
 	background: #FFFFFF;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .box.padding

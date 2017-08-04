@@ -18,13 +18,10 @@
     @include('Front::layouts.header')
     <div class="main-content">
       <div class="container">
-        @include('Front::layouts.banner')
-            
-            @yield('content')
-
-        @include('Front::layouts.footer')
+          @yield('content')
       </div>
     </div>  <!-- end main-content -->
+    @include('Front::layouts.footer')
   </div>
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/bootstrap.min.js"></script>
@@ -32,6 +29,10 @@
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/jquery.easing.1.3.js"></script>
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/camera.js"></script>
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/sapphire.js"></script>
+
+  <!-- SWIPER -->
+  <link rel="stylesheet" href="{{asset('/public/assets/front')}}/js/plugin/swiper/css/swiper.min.css">
+  <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/plugin/swiper/js/swiper.jquery.min.js"></script>
   <script>
   $(document).ready(function() {
     $('#slideshow0 > div').camera({
@@ -75,7 +76,13 @@
       transPeriod: 1500,
       imagePath: '../image/'
     });
+
+    /** Swiper **/
+    var productSwiper = new Swiper('.swiper-product',{
+
+    });
   });
   </script>
+  @yield('script')
 </body>
 </html>
