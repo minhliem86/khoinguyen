@@ -19,7 +19,7 @@
     <div class="main-content">
       <div class="container">
           @yield('content')
-      </div>
+      </div> 
     </div>  <!-- end main-content -->
     @include('Front::layouts.footer')
   </div>

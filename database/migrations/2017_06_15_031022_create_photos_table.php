@@ -16,6 +16,7 @@ class CreatePhotosTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->string('img_url')->nullable();
+            $table->string('thumb_url')->nullable();
             $table->string('filename')->nullable();
             $table->integer('order')->nullable()->default(0);
             $table->integer('photoable_id');

@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
       <div class="col-sm-12">
-        <form method="POST" action="{{route('admin.product.store')}}" id="form" role="form" class="form-horizontal">
+        <form method="POST" action="{{route('admin.product.store')}}" id="form" role="form" class="form-horizontal" enctype="multipart/form-data">
           {{Form::token()}}
           <div class="form-group">
             <label class="col-md-2 control-label">Sản phẩm</label>
@@ -46,7 +46,7 @@
           <div class="form-group">
               <label for="" class="col-md-2">Hình chi tiết </label>
               <div class="col-md-10">
-                <input type="file" name="thumb-input[]"  multiple >
+                <input type="file" name="thumb-input[]" id="thumb-input" multiple >
               </div>
 
           </div>
@@ -77,9 +77,14 @@
 
         $(document).ready(function(){
             $("#thumb-input").fileinput({
+                uploadUrl: "", // server upload action
+                uploadAsync: true,
                 showUpload: false,
                 showCaption: false,
-                showDrag: true
+
+                fileActionSettings:{
+                  showUpload : false,
+                }
             })
         })
     </script>

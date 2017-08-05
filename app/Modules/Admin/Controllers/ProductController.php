@@ -13,6 +13,8 @@ use DB;
 
 class ProductController extends Controller
 {
+    protected $_bigsize = 'public/upload/bigsize';
+    protected $_smallsize = 'public/upload/smallsize';
     protected $productRepo;
     protected $common;
 
@@ -104,8 +106,16 @@ class ProductController extends Controller
             'order' => $order,
             'category_id' => 1,
         ];
-        $this->productRepo->create($data);
-        return redirect()->route('admin.product.index')->with('success','Created !');
+        $product = $this->productRepo->create($data);
+
+        if($request->thumb-input('thumb-input')){
+          foreach($request->thumb-input('thumb-input') as $thumb){
+            $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
+            $thumb = $this->common->uploadImage($request, $thumb, $this->_smallsize,$resize = true, 500, 300);
+            
+          }
+        }
+        // return redirect()->route('admin.product.index')->with('success','Created !');
     }
 
     /**
@@ -217,6 +227,6 @@ class ProductController extends Controller
     }
     public function processUpload(Request $request)
     {
-        
+
     }
 }
