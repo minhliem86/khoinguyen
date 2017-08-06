@@ -8,7 +8,7 @@ class Photo extends Model
 {
     public $table = "photos";
 
-    protected $fillable = ['title', 'img_url', 'filename', 'order'];
+    protected $fillable = ['title', 'img_url', 'filename', 'order', 'thumb_url'];
 
     public function photoable()
     {

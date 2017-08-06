@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
        'categories',
        'products',
        'photos',
-       'companies'
+       'companies',
+       'medias',
+       'photos'
      ];
 
      protected $seeders = [

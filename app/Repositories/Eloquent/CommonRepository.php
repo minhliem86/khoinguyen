@@ -21,6 +21,24 @@ class CommonRepository{
     return $img_url = asset($destinationPath).'/'.$filename;
   }
 
+  public function createThumbnail($fullfile, $location, $width = 500, $height = 250)
+  {
+    if($fullfile){
+      $arr_thumb = explode('/',$fullfile);
+      $item = end($arr_thumb);
+      $folder = $location . '/'.$width.'x'.$height;
+      if(!\File::exists($folder)){
+        \File::makeDirectory($folder, 0775);
+      }
+      $filename = time();
+      \Image::make($fullfile)->fit($width, $height)->save($folder.'/'.$item);
+      return $thumb_url = asset($folder).'/'.$item;
+    }else{
+      return '';
+    }
+  }
+
+
   public function getPath($path, $removePath = '/laravel-filemanager/')
   {
     return $str = str_replace($removePath,'',$path);

@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="form-group">
-              <label for="" class="col-md-2">Hình chi tiết </label>
+              <label class="col-md-2 control-label">Hình chi tiết </label>
               <div class="col-md-10">
                 <input type="file" name="thumb-input[]" id="thumb-input" multiple >
               </div>
@@ -76,12 +76,23 @@
         }
 
         $(document).ready(function(){
+          // var footerTemplate = '<div class="file-thumbnail-footer" style ="height:94px">\n' +
+          // '   <div style="margin:5px 0">\n' +
+          // '       <input class="kv-input kv-new form-control input-sm text-center {TAG_CSS_NEW}" value="{caption}" placeholder="Enter caption..." name="caption[]">\n' +
+          // '   </div>\n' +
+          // '   {size} {progress} {actions}\n' +
+          // '</div>';
             $("#thumb-input").fileinput({
-                uploadUrl: "", // server upload action
+                uploadUrl: "{{route('admin.product.store')}}", // server upload action
                 uploadAsync: true,
                 showUpload: false,
                 showCaption: false,
-
+                // layoutTemplates: {footer: footerTemplate},
+                // previewThumbTags: {
+                //     '{TAG_VALUE}': '',        // no value
+                //     '{TAG_CSS_NEW}': '',      // new thumbnail input
+                //     '{TAG_CSS_INIT}': 'hide'  // hide the initial input
+                // },
                 fileActionSettings:{
                   showUpload : false,
                 }

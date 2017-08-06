@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
+use App\Repositories\PhotoRepository;
 use App\Repositories\Eloquent\CommonRepository;
 use Datatables;
 use DB;
@@ -14,14 +15,16 @@ use DB;
 class ProductController extends Controller
 {
     protected $_bigsize = 'public/upload/bigsize';
-    protected $_smallsize = 'public/upload/smallsize';
+    protected $_thumbnail = 'public/upload/thumbnails';
     protected $productRepo;
     protected $common;
+    protected $photo;
 
-    public function __construct(ProductRepository $product, CommonRepository $common)
+    public function __construct(ProductRepository $product, CommonRepository $common, PhotoRepository $photo)
     {
         $this->productRepo = $product;
         $this->common = $common;
+        $this->photo = $photo;
     }
     /**
      * Display a listing of the resource.
@@ -95,6 +98,8 @@ class ProductController extends Controller
     {
         if($request->has('img_url')){
             $img_url = $this->common->getPath($request->input('img_url'));
+        }else{
+          $img_url = "";
         }
         $order = $this->productRepo->getOrder();
         $data = [
@@ -108,14 +113,21 @@ class ProductController extends Controller
         ];
         $product = $this->productRepo->create($data);
 
-        if($request->thumb-input('thumb-input')){
-          foreach($request->thumb-input('thumb-input') as $thumb){
+        if($request->file('thumb-input')){
+          foreach($request->file('thumb-input') as $k=>$thumb){
+            $caption = $request->input('caption');
             $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
-            $thumb = $this->common->uploadImage($request, $thumb, $this->_smallsize,$resize = true, 500, 300);
-            
+            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail);
+
+            $order = $this->photo->getOrder();
+            $product->photos()->save(new \App\Models\Photo([
+              'img_url' => $this->common->getPath($img, asset('public/upload')),
+              'thumb_url' => $this->common->getPath($thumbnail, asset('public/upload')),
+              'order'=>$order,
+            ]));
           }
         }
-        // return redirect()->route('admin.product.index')->with('success','Created !');
+        return redirect()->route('admin.product.index')->with('success','Created !');
     }
 
     /**

@@ -71,11 +71,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         /*PRODUCT*/
         Route::get('product/getData', ['as' => 'admin.product.getData', 'uses' => 'ProductController@getData']);
         Route::post('product/deleteAll', ['as' => 'admin.product.deleteAll', 'uses' => 'ProductController@deleteAll']);
-        Route::post('product/updateStatus', ['as' => 'admin.product.updateStatus', 'uses' => 'ProductController@updateStatus']);
         Route::post('product/postAjaxUpdateOrder', ['as' => 'admin.product.postAjaxUpdateOrder', 'uses' => 'ProductController@postAjaxUpdateOrder']);
         Route::post('product/updateStatus', ['as' => 'admin.product.updateStatus', 'uses' => 'ProductController@updateStatus']);
-        Route::post('product/process-file',[ 'as' => 'admin.product.process', 'uses' => 'ProductController@processUpload']);
         Route::resource('product', 'ProductController');
+
+        /* MEDIA */
+        Route::get('media/getData', ['as' => 'admin.media.getData', 'uses' => 'MediaController@getData']);
+        Route::post('media/deleteAll', ['as' => 'admin.media.deleteAll', 'uses' => 'MediaController@deleteAll']);
+        Route::post('media/updateStatus', ['as' => 'admin.media.updateStatus', 'uses' => 'MediaController@updateStatus']);
+        Route::post('media/postAjaxUpdateOrder', ['as' => 'admin.media.postAjaxUpdateOrder', 'uses' => 'MediaController@postAjaxUpdateOrder']);
+        Route::resource('media', 'MediaController');
     });
   });
 });
