@@ -1,53 +1,26 @@
 @extends('Front::layouts.default')
 
+@section('title', 'Inox Khôi Nguyên - Giới thiệu về công ty Khôi Nguyên')
+
 @section('content')
     @include('Front::layouts.banner')
     <div class="row">
-	   <div class="col-md-3 left-menu">
-              <div class="wrap-left-menu">
-                  <div class="box">
-                    <h3 class="title-box">Sản Phẩm nổi bật</h3>
-                    <div class="content-box">
-                        <div class="swiper-container swiper-product">
-                          <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+        <div class="col-md-12">
+                <div class="wrap-about">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+
                             </div>
-                            <div class="swiper-slide">
-                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+                            <div class="col-md-8">
+                                <p class="text_about">At mea expetendis percipitur, error doctus argumentum ex qui, officiis adipiscing signiferumque te eam. At quodsi civibus vis, his ad dicat minim appetere, omnes principes ex mel. Ex liber audire maiestatis mel, no nam mandamus omittantur. Ad vim illud utroque. Ex vim inani volumus, everti admodum appareat an usu, propriae vivendum et sea.</p>
                             </div>
-                          </div>
                         </div>
                     </div>
-                  </div>
-              </div>    <!-- end wrap-left-menu-->
-              <div class="wrap-left-menu">
-                  <div class="box">
-                    <h3 class="title-box">Hỗ Trợ Khách Hàng</h3>
-                    <div class="content-box">
 
-                    </div>
-                  </div>
-              </div>    <!-- end wrap-left-menu-->
-		</div>    <!-- end left-menu-->
-
-  		<div class="col-md-9">
-
-  			<div class="row">
-  			    <div class="col-md-4">
-  				    <div class="product">
-  					    <a href="product.html"><img alt="dress1home" src="products/dress1home.jpg"></a>
-  						<div class="name">
-  					    <a href="product.html">Elegant Dress</a>
-  					    </div>
-  					    <div class="price">
-  					    <p>$200.00</p>
-  					    </div>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
+                </div>
+        </div>
+    </div>
 @stop
 
 @section('script')

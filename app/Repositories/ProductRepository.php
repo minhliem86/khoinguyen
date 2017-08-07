@@ -11,5 +11,10 @@ class ProductRepository extends BaseRepository implements RestfulInterface{
     {
         return Product::class;
     }
+
+    public function getProductOnHome()
+    {
+        return $this->model->where('status', 1)->orderBy('order','ASC')->get();
+    }
   // END
 }

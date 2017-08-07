@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\PhotoWasDeleted' => [
             'App\Listeners\PhotoWasDeletedListener',
         ],
+        'App\Events\SendEmail' => [
+            'App\Listeners\SendEmailListener',
+        ],
     ];
 
     /**

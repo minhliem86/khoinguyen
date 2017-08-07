@@ -157,6 +157,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Modules\ModuleServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
         // THIRD PARTY
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
