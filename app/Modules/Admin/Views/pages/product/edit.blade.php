@@ -134,12 +134,6 @@
           showCaption: false,
            browseLabel: "Thêm hình",
            dropZoneEnabled : false,
-          // layoutTemplates: {footer: footerTemplate},
-          // previewThumbTags: {
-          //     '{TAG_VALUE}': '',        // no value
-          //     '{TAG_CSS_NEW}': '',      // new thumbnail input
-          //     '{TAG_CSS_INIT}': 'hide'  // hide the initial input
-          // },
           fileActionSettings:{
             showUpload : false,
           }

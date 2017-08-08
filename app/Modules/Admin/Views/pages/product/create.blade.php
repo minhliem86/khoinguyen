@@ -93,6 +93,7 @@
                 //     '{TAG_CSS_NEW}': '',      // new thumbnail input
                 //     '{TAG_CSS_INIT}': 'hide'  // hide the initial input
                 // },
+                dropZoneEnabled : false,
                 fileActionSettings:{
                   showUpload : false,
                 }
