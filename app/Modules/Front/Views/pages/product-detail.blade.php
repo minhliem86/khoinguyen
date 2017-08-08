@@ -3,41 +3,49 @@
 @section('title', 'Inox Khôi Nguyên - Sản phẩm chi tiết')
 
 @section('content')
+    @if($product)
     <div class="row product-info">
         <div class="col-md-6">
-            <div class="image"><a class="cloud-zoom" rel="adjustX: 0, adjustY:0" id='zoom1' href="{{asset('/public/assets/front')}}/products/dress1home.jpg" title="Nano"><img src="{{asset('/public/assets/front')}}/products/dress1home.jpg" title="Nano" alt="Nano" id="image" /></a></div>
+            <div class="image">
+                <a class="cloud-zoom" rel="adjustX: 0, adjustY:0" id='zoom1' href="{{asset('/public/upload')}}/{{$product->avatar_img}}" title="{{$product->title}}">
+                    <img src="{{asset('/public/upload')}}/{{$product->avatar_img}}" title="{{$product->title}}" alt="{{$product->title}}" id="image" />
+                </a>
+            </div>
+            @if(!$product->photos->isEmpty())
             <div class="image-additional">
-                <a title="Dress" rel="useZoom: 'zoom1', smallImage:'{{asset('/public/assets/front')}}/products/dress1home.jpg'" class="cloud-zoom-gallery" href="{{asset('/public/assets/front')}}/products/dress1home.jpg">
-                    <img alt="Dress" title="Dress" src="{{asset('/public/assets/front')}}/products/dress1home.jpg">
+                <a title="{{$product->title}}" rel="useZoom: 'zoom1', smallImage:'{{asset('/public/upload')}}/{{$product->avatar_img}}' " class="cloud-zoom-gallery" href="{{asset('/public/upload')}}/{{$product->avatar_img}}">
+                    <img alt="{{$product->title}}" title="{{$product->title}}" src="{{asset('/public/upload')}}/{{$product->avatar_img}}">
                 </a>
-                <a title="Dress" rel="useZoom: 'zoom1', smallImage:'{{asset('/public/assets/front')}}/products/dress5home.jpg'" class="cloud-zoom-gallery" href="{{asset('/public/assets/front')}}/products/dress5home.jpg">
-                    <img alt="Dress" title="Dress" src="{{asset('/public/assets/front')}}/products/dress5home.jpg">
+                @foreach($product->photos()->get() as $photo)
+                <a title="{{$product->title}}" rel="useZoom: 'zoom1', smallImage:'{{asset('/public/upload')}}/{{$photo->thumb_url}}' " class="cloud-zoom-gallery" href="{{asset('/public/upload')}}/{{$photo->img_url}}">
+                    <img alt="{{$product->title}}" title="{{$product->title}}" src="{{asset('/public/upload')}}/{{$photo->img_url}}">
                 </a>
+                @endforeach
               </div>
+              @endif
         </div>
         <div class="col-md-6">
-            <h1>White bed</h1>
+                <h1>{{$product->title}}</h1>
                 <div class="line"></div>
                 <ul>
-                    <li><span>Brand:</span> <a href="#">Shop Online</a></li>
-                    <li><span>Product Code:</span> Product 001</li>
-                    <li><span>Availability: </span>In Stock</li>
+                    <li><span>Tình trạng: </span>Còn hàng</li>
                 </ul>
                 <div class="price">
-                    Price <span class="strike">$150.00</span> <strong>$125.00</strong>
+                    Giá:  <strong>{{number_format($product->price)}} VND</strong>
                 </div>
                 <div class="line"></div>
                 <div class="tabs">
                     <ul class="nav nav-tabs" id="myTab">
-                        <li class="active"><a href="#home">Description</a></li>
+                        <li class="active"><a href="#home">Mô tả</a></li>
                     </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="home">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then </div>
+                    <div class="tab-pane active" id="home">{!!$product->description!!}</div>
                 </div>
                 </div>
         </div>
     </div>
-    <h3 class="related">Related products</h3>
+    @endif
+    <h3 class="related">Các Sản Phẩm Khác</h3>
     <div class="row">
         <div class="col-md-3">
             <div class="product">

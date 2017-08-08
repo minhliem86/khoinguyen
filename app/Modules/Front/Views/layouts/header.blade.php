@@ -12,10 +12,10 @@
 
     <div class="navbar-collapse collapse navbar-right">
       <ul class="nav navbar-nav">
-        <li class="{{LP_lib::setActive(1,'')}}" ><a href="index.html">Trang chủ</a></li>
-        <li><a href="blog.html">Giới thiệu</a></li>
-        <li><a href="contact.html">Sản phẩm</a></li>
-        <li class="{{LP_lib::setActive(1,'lien-he')}}"><a href="contact.html">Liên hệ</a></li>
+        <li class="{{LP_lib::setActive(1,'')}}" ><a href="{{route('front.home')}}">Trang chủ</a></li>
+        <li class="{{LP_lib::setActive(1,'ve-chung-toi')}}"><a href="{{route('front.about')}}">Giới thiệu</a></li>
+        <li class="{{LP_lib::setActive(1,'san-pham')}}"><a href="{{route('front.product')}}">Sản phẩm</a></li>
+        <li class="{{LP_lib::setActive(1,'lien-he')}}"><a href="{{route('front.contact.index')}}">Liên hệ</a></li>
       </ul>
       <form action="/" class="navbar-form navbar-search navbar-right" role="search">
         <div class="input-group">

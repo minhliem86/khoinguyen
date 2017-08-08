@@ -21,7 +21,7 @@
             <li><a href="{{route('front.home')}}">Trang Chủ</a></li>
             <li><a href="{{route('front.about')}}">Giới Thiệu</a></li>
             <li><a href="{{route('front.product')}}">Sản Phẩm</a></li>
-            <li><a href="{{route('front.contact')}}">Liên Hệ</a></li>
+            <li><a href="{{route('front.contact.index')}}">Liên Hệ</a></li>
           </ul>
           <ul class="social-network">
             <li><a href=""><i class="fa fa-facebook"></i></a></li>

@@ -69,7 +69,7 @@ class ProductController extends Controller
              </label>
          ';
      })->editColumn('avatar_img',function($product){
-          return '<img src="'.$product->avatar_img.'" width="120" class="img-responsive">';
+          return '<img src="'.asset('public/upload').'/'.$product->avatar_img.'" width="120" class="img-responsive">';
         })->filter(function($query) use ($request){
            if (request()->has('name')) {
                $query->where('products.title', 'like', "%{$request->input('name')}%");
@@ -244,6 +244,23 @@ class ProductController extends Controller
             $id = $request->input('id');
             $cate = $this->productRepo->find($id);
             $cate->status = $value;
+            $cate->save();
+            return response()->json([
+                'mes' => 'Updated',
+                'error'=> false,
+            ], 200);
+        }
+    }
+
+    public function updateHotProduct(Request $request)
+    {
+        if(!$request->ajax()){
+            abort('404', 'Not Access');
+        }else{
+            $value = $request->input('value');
+            $id = $request->input('id');
+            $cate = $this->productRepo->find($id);
+            $cate->hot = $value;
             $cate->save();
             return response()->json([
                 'mes' => 'Updated',

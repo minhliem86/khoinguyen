@@ -96,9 +96,10 @@ public function findWhereIn( $field, array $values, $columns = array('*'))
  * @return void
 */
 
- public function findWhereNotIn( $field, array $values, $columns = array('*'))
+ public function findWhereNotIn( $field, array $values, $columns = array('*'), $with = [])
  {
-     return $this->model->whereNotIn($field, $values)->get($columns);
+     $query = $this->make($with);
+     return $query->whereNotIn($field, $values)->get($columns);
  }
 
  /**
