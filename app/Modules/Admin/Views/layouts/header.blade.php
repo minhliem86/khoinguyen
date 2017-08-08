@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" class="navbar-brand">Bootflat-Admin</a>
+      <a href="#" class="navbar-brand">INOX KHOI NGUYEN - Admin Dashboard</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,7 +22,7 @@
             <li class="dropdown-header">Setting</li>
             <li><a href="{{route('admin.profile.index')}}">Profile</a></li>
             <li class="divider"></li>
-            <li ><a href="{{url('admin/logout')}}">Signout</a></li>
+            <li ><a href="{{url('admin/logout')}}">SignOut</a></li>
           </ul>
         </li>
       </ul>

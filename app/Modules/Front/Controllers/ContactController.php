@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\ContactRepository;
+use App\Repositories\CompanyRepository;
 use Validator;
 
 class ContactController extends Controller
 {
     protected $contact;
+    protected $company;
 
-    public function __construct(ContactRepository $contact)
+    public function __construct(ContactRepository $contact, CompanyRepository $company)
     {
         $this->contact = $contact;
+        $this->company = $company;
     }
 
     public function index()
     {
-        return view('Front::pages.contact');
+        $company = $this->company->getFirst();
+        return view('Front::pages.contact', compact('company'));
     }
 
     public function postRegister(Request $request)

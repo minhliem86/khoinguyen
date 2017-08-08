@@ -4,7 +4,7 @@
     {{Html::link(url()->previous(), 'Cancel', ['class'=>'btn btn-danger'])}}
 @stop
 
-@section('title',"Customer's Information")
+@section('title',"Khách hàng liên hệ")
 
 @section('content')
     <div class="row">

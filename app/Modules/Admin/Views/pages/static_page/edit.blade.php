@@ -5,26 +5,26 @@
     <button class="btn btn-primary" onclick="submitForm();">Save Changes</button>
 @stop
 
-@section('title','Edit Page')
+@section('title','Quản lý Trang')
 
 @section('content')
     <div class="row">
       <div class="col-sm-12">
         {{Form::model($inst, ['route'=>['admin.page.update',$inst->id], 'method'=>'put' ])}}
           <div class="form-group">
-            <label class="col-md-2 control-label">Page Name</label>
+            <label class="col-md-2 control-label">Tên Trang</label>
             <div class="col-md-10">
               {{Form::text('page_name',old('page_name'), ['class'=>'form-control', 'placeholder'=>'Page Name'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Title</label>
+            <label class="col-md-2 control-label">Tiêu đề Trang</label>
             <div class="col-md-10">
               {{Form::text('title',old('title'), ['class'=>'form-control', 'placeholder'=>'Title'])}}
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Content</label>
+            <label class="col-md-2 control-label">Nội dung</label>
             <div class="col-md-10">
               <textarea name="content" rows="15" class="form-control my-editor" >{{$inst->content}}</textarea>
             </div>

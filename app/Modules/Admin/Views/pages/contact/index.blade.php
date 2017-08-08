@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-danger" id="btn-remove-all">Remove All Selected</button>
 @stop
 
-@section('title','Customers')
+@section('title','Khách hàng liên hệ')
 
 @section('content')
     @if(Session::has('error'))

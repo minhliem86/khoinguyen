@@ -25,5 +25,6 @@ class CompanyRepository extends BaseRepository implements RestfulInterface{
     {
       return $this->model->firstOrCreate($data);
     }
+
   // END
 }

@@ -1635,7 +1635,10 @@ ul.slides
 	margin-bottom:30px;
 	max-width:none;
 }
-
+#mapFooter{
+  height:200px;
+  max-width: none;
+}
 #map img
 {
 	max-width:none;

@@ -48,7 +48,7 @@
   					      <a href="{{route('front.product.detail', $item_product->slug)}}">{{$item_product->title}}</a>
   					    </div>
   					    <div class="price">
-  					      <p>{{$item_product->price}}</p>
+  					      <p>{{number_format($item_product->price)}} VND</p>
   					    </div>
   					  </div>
   				  </div>

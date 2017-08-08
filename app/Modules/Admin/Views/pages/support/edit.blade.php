@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Status</label>
+            <label class="col-md-2 control-label" for="description">Trạng thái</label>
             <div class="col-md-10">
                 <label class="toggle">
                   <input type="checkbox" name="status" value="1" {{$inst->status == 1 ? 'checked' : '' }}  >

@@ -116,7 +116,7 @@ class ProductController extends Controller
         if($request->file('thumb-input')){
           foreach($request->file('thumb-input') as $k=>$thumb){
             $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
-            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail);
+            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail,100, 100);
 
             $order = $this->photo->getOrder();
             $product->photos()->save(new \App\Models\Photo([
@@ -178,7 +178,7 @@ class ProductController extends Controller
         if($request->hasFile('thumb-input')){
           foreach($request->file('thumb-input') as $k=>$thumb){
             $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
-            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail);
+            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail,100, 100);
 
             $order = $this->photo->getOrder();
             $product->photos()->save(new \App\Models\Photo([

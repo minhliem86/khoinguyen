@@ -8,11 +8,12 @@
             <h1 class="e404"><strong>[404]</strong></h1>
         </div>
         <div class="col-md-6">
-            <h1 class="page">Page can not be found.</h1>
-            <h6 class="e404">We are sorry, but the page you are looking for might have been removed, had its name changed or is temporarily unavailable.</h6>
+            <h1 class="page">Không thể tìm thấy trang.</h1>
+            <h6 class="e404">Dù đã cố gắng nhưng chúng tôi không thể tìm thấy trang bạn yêu cầu.</h6>
+            <h6 class="e404">Trân thành xin lỗi !</h6>
             <p>
-            <a class="btn btn-primary" href="index.html">
-                Get me back to homepage!
+            <a class="btn btn-primary" href="{{route('front.home')}}">
+                Trang chủ
             </a>
             </p>
         </div>

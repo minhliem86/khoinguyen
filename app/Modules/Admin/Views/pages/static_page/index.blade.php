@@ -6,7 +6,7 @@
     <button type="button" class="btn btn-warning " id="btn-updateOrder">Update Order</button>
 @stop
 
-@section('title','Static Page')
+@section('title','Quản lý Trang')
 
 @section('content')
     @if(Session::has('error'))
@@ -25,8 +25,8 @@
           <thead>
             <tr>
               <th width="5%">ID</th>
-              <th width="20%"><i class="glyphicon glyphicon-search"></i> Page Name</th>
-              <th width="10%">Status</th>
+              <th width="20%"><i class="glyphicon glyphicon-search"></i> Tên Trang</th>
+              <th width="10%">Trạng Thái</th>
               <th width="20%">&nbsp;</th>
             </tr>
           </thead>

@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand"><img src="{{asset('/public/assets/front')}}/img/logo.png" alt="Inox Khôi Nguyên">Inox Khôi Nguyên</a>
+      <a href="{{route('front.home')}}" class="navbar-brand"><img src="{{asset('/public/assets/front')}}/img/logo.png" alt="Inox Khôi Nguyên">Inox Khôi Nguyên</a>
     </div>
 
     <div class="navbar-collapse collapse navbar-right">

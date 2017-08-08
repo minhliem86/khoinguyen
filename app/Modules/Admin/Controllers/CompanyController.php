@@ -14,11 +14,12 @@ class CompanyController extends Controller
     {
       if($request->isMethod('put')){
         $id = $companyRepo->getFirst()->id;
+        $map = explode(',',$request->input('map'));
         $data = [
             'email' => $request->input('email'),
             'address' => $request->input('address'),
             'phone' => $request->input('phone'),
-            'map' => $request->input('map'),
+            'map' => json_encode($map),
         ];
         $rs = $companyRepo->update($data, $id);
         if(!$rs){
@@ -27,11 +28,12 @@ class CompanyController extends Controller
         return redirect()->back()->with('success', 'Saved !');
       }
       if($request->isMethod('post')){
+        $map = explode(',',$request->input('map'));
         $data = [
             'email' => $request->input('email'),
             'address' => $request->input('address'),
             'phone' => $request->input('phone'),
-            'map' => $request->input('map'),
+            'map' => json_encode($map),
         ];
         $rs = $companyRepo->create($data);
         if(!$rs){

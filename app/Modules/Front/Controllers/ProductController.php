@@ -26,8 +26,8 @@ class ProductController extends Controller
     public function getDetail($slug)
     {
         $product = $this->product->getFirstProduct('slug', $slug,['photos']);
-        
-        $product_relate = $this->product->findWhereNotIn('id', [$product->id],['avatar_img']);
+
+        $product_relate = $this->product->findWhereNotIn('id', [$product->id],['avatar_img','title','slug', 'price']);
         return view('Front::pages.product-detail', compact('product', 'product_relate'));
     }
 }
