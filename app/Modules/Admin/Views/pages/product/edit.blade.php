@@ -134,9 +134,9 @@
           showCaption: false,
            browseLabel: "Thêm hình",
            dropZoneEnabled : false,
-          fileActionSettings:{
-            showUpload : false,
-          }
+            fileActionSettings:{
+              showUpload : false,
+            }
         })
       })
 

@@ -98,6 +98,7 @@
                   showUpload : false,
                 }
             })
+
         })
     </script>
 @stop
