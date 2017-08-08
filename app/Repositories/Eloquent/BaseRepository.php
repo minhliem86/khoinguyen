@@ -60,7 +60,7 @@ abstract class BaseRepository implements RestfulInterface{
   public function find($id, $columns = array('*'), $with = [])
   {
     try {
-        $query = $this->make($with);
+      $query = $this->make($with);
       return $query->findOrFail($id, $columns);
     } catch (ModelNotFoundException  $e) {
       return false;

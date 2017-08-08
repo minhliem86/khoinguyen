@@ -13,6 +13,7 @@ class BannerComposer
     }
     public function compose(View $view)
     {
-
+      $banner = $this->media->getBannerOnHome();
+      $view->with(['banner'=>$banner]);
     }
 }

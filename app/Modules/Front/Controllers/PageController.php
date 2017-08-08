@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Reporsitories\PageRepository;
-use App\Reporsitories\ProductRepository;
+use App\Repositories\PageRepository;
+use App\Repositories\ProductRepository;
 
 class PageController extends Controller
 {
@@ -21,9 +21,8 @@ class PageController extends Controller
     }
     public function homepage()
     {
-        $home = $this->pageRepo->findByField('slug','home',['content']);
+        // $home = $this->pageRepo->findByField('slug','home',['content']);
         $product = $this->productRepo->getProductOnHome();
-        dd($product);
-        return view('Front::pages.home', compact('home'));
+        return view('Front::pages.home', compact ('product'));
     }
 }

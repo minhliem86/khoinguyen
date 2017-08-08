@@ -11,5 +11,9 @@ class MediaRepository extends BaseRepository implements RestfulInterface{
     {
         return Media::class;
     }
+    public function getBannerOnHome()
+    {
+        return $this->model->where('status', 1)->orderBy('order','ASC')->get();
+    }
   // END
 }

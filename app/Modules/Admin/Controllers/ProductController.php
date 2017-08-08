@@ -115,7 +115,6 @@ class ProductController extends Controller
 
         if($request->file('thumb-input')){
           foreach($request->file('thumb-input') as $k=>$thumb){
-            $caption = $request->input('caption');
             $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
             $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail);
 
@@ -149,7 +148,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $inst = $this->productRepo->find($id);
+        // dd($this->productRepo->make(['photos'])->find(19));
+        $inst = $this->productRepo->find($id,['*'],['photos']);
         return view('Admin::pages.product.edit', compact('inst'));
     }
 
@@ -173,7 +173,21 @@ class ProductController extends Controller
                 'order' => $request->input('order'),
                 'status' => $request->input('status'),
         ];
-        $this->productRepo->update($data, $id);
+        $product = $this->productRepo->update($data, $id);
+
+        if($request->hasFile('thumb-input')){
+          foreach($request->file('thumb-input') as $k=>$thumb){
+            $img = $this->common->uploadImage($request, $thumb, $this->_bigsize,$resize = false);
+            $thumbnail = $this->common->createThumbnail($img,$this->_thumbnail);
+
+            $order = $this->photo->getOrder();
+            $product->photos()->save(new \App\Models\Photo([
+              'img_url' => $this->common->getPath($img, asset('public/upload')),
+              'thumb_url' => $this->common->getPath($thumbnail, asset('public/upload')),
+              'order'=>$order,
+            ]));
+          }
+        }
         return redirect()->route('admin.product.index')->with('success', 'Updated !');
     }
 
@@ -237,8 +251,36 @@ class ProductController extends Controller
             ], 200);
         }
     }
-    public function processUpload(Request $request)
-    {
 
+    /* REMOVE CHILD PHOTO */
+    public function AjaxRemovePhoto(Request $request)
+    {
+        if(!$request->ajax()){
+            abort('404', 'Not Access');
+        }else{
+            $id = $request->input('id_photo');
+            $this->photo->delete($id);
+            return response()->json([
+                'mes' => 'Deleted',
+                'error'=> false,
+            ], 200);
+        }
+    }
+
+    /* UPDATE CHILD PHOTO */
+    public function AjaxUpdatePhoto(Request $request)
+    {
+      if(!$request->ajax()){
+          abort('404', 'Not Access');
+      }else{
+          $id = $request->input('id_photo');
+          $order = $request->input('value');
+          $photo = $this->photo->update(['order'=>$order], $id);
+
+          return response()->json([
+              'mes' => 'Update Order',
+              'error'=> false,
+          ], 200);
+      }
     }
 }

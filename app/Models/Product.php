@@ -12,7 +12,7 @@ class Product extends Model
 
     public $table = "products";
 
-    protected $fillable = ['title','avatar_img','description', 'order', 'status', 'category_id', 'price'];
+    protected $fillable = ['title','avatar_img','description', 'order', 'status', 'category_id', 'price', 'slug'];
 
     public function categories(){
       return $this->belongsTo('App\Models\Category', 'category_id');

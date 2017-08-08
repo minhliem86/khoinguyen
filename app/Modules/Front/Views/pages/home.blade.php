@@ -32,20 +32,25 @@
 		</div>    <!-- end left-menu-->
 
   		<div class="col-md-9">
-
+        @if(!$product->isEmpty())
+        @foreach($product->chunk(3) as $chunk)
   			<div class="row">
+            @foreach($chunk as $item_product)
   			    <div class="col-md-4">
   				    <div class="product">
-  					    <a href="product.html"><img alt="dress1home" src="products/dress1home.jpg"></a>
-  						<div class="name">
-  					    <a href="product.html">Elegant Dress</a>
+  					    <a href="{{route('front.product.detail', $item_product->slug)}}"><img alt="{{$item_product->title}}" src="{{asset('public/upload')}}/{{$item_product->avatar_img}}"></a>
+  						  <div class="name">
+  					      <a href="{{route('front.product.detail', $item_product->slug)}}">{{$item_product->title}}</a>
   					    </div>
   					    <div class="price">
-  					    <p>$200.00</p>
+  					      <p>{{$item_product->price}}</p>
   					    </div>
-  					</div>
-  				</div>
+  					  </div>
+  				  </div>
+            @endforeach
   			</div>
+        @endforeach
+        @endif
   		</div>
   	</div>
 @stop
