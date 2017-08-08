@@ -32,9 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
       //   PORFILE
       Route::get('/profile', ['as' => 'admin.profile.index', 'uses' => 'ProfileController@index']);
 
-        //   PROJECT
-        Route::post('/project/deleteAll', ['as' => 'admin.project.deleteAll', 'uses' => 'ProjectController@deleteAll'  ]);
-        Route::resource('/project', 'ProjectController');
+
 
         // MULTI PHOTOs
         Route::get('photo', ['as'=>'admin.photo.index', 'uses'=>'MultiPhotoController@getIndex']);
@@ -75,6 +73,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         Route::post('product/AjaxRemovePhoto', ['as' => 'admin.product.AjaxRemovePhoto', 'uses' => 'ProductController@AjaxRemovePhoto']);
         Route::post('product/AjaxUpdatePhoto', ['as' => 'admin.product.AjaxUpdatePhoto', 'uses' => 'ProductController@AjaxUpdatePhoto']);
         Route::post('product/updateStatus', ['as' => 'admin.product.updateStatus', 'uses' => 'ProductController@updateStatus']);
+        Route::post('product/updateHotProduct', ['as' => 'admin.product.updateHotProduct', 'uses' => 'ProductController@updateHotProduct']);
         Route::resource('product', 'ProductController');
 
         /* MEDIA */
@@ -83,6 +82,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Modules\Admin\Controllers
         Route::post('media/updateStatus', ['as' => 'admin.media.updateStatus', 'uses' => 'MediaController@updateStatus']);
         Route::post('media/postAjaxUpdateOrder', ['as' => 'admin.media.postAjaxUpdateOrder', 'uses' => 'MediaController@postAjaxUpdateOrder']);
         Route::resource('media', 'MediaController');
+
+        /*SUPPORT*/
+        Route::get('support/getData', ['as' => 'admin.support.getData', 'uses' => 'SupportController@getData']);
+        Route::post('support/deleteAll', ['as' => 'admin.support.deleteAll', 'uses' => 'SupportController@deleteAll']);
+        Route::post('support/updateStatus', ['as' => 'admin.support.updateStatus', 'uses' => 'SupportController@updateStatus']);
+        Route::post('support/postAjaxUpdateOrder', ['as' => 'admin.support.postAjaxUpdateOrder', 'uses' => 'SupportController@postAjaxUpdateOrder']);
+        Route::resource('support', 'SupportController');
     });
   });
 });

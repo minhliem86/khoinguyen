@@ -11,5 +11,10 @@ class PageRepository extends BaseRepository implements RestfulInterface{
     {
         return Page::class;
     }
+
+    public function firstByField($field, $value, $columns = ['*'])
+    {
+        return $this->model->where($field,'=',$value)->first($columns);
+    }
   // END
 }

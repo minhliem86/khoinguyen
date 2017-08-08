@@ -961,6 +961,29 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 {
     margin-bottom:25px;
 }
+.left-menu div.box  .content-box .skype-button{
+    padding:6px 15px 6px 30px;
+    background:#00AFF0;
+    color:white;
+    font-size:14px;
+    display:inline-block;
+    border-radius: 20px;
+    margin-bottom:10px;
+    position:relative;
+}
+.left-menu div.box  .content-box .skype-button:before{
+    content:'';
+    display:block;
+    width:15px;
+    height:15px;
+    background:url('../images/chat.svg')no-repeat;
+    position:absolute;
+    left:10px;
+    top:50%;
+    transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+}
 
 .left-menu .banner
 {
@@ -1678,12 +1701,21 @@ ul.slides
    line-height:22px;
    font-weight:normal;
 }
+.contact_form p.text_thank{
+    color:#777;
+    font-size:14px;
+    line-height:22px;
+    font-weight:normal;
+}
 
 /*end contact us*/
 
 /*about us*/
-
-.text_about
+.wrap-about{
+    background:white;
+    padding:15px 0;
+}
+.wrap-about p
 {
    font-size:14px;
    color:#777;
@@ -1960,12 +1992,13 @@ input[type="text"],label
 	background:#fff;
 	margin:0px;
 	margin-top:20px;
+    padding:15px 0;
 }
 
-.product-info .col-md-6:first-child
+/*.product-info .col-md-6:first-child
 {
 	padding:0px;
-}
+}*/
 
 .product-info .image-additional img
 {
@@ -2996,6 +3029,8 @@ ul.autocomplete li img
   vertical-align:middle;
   margin-right:5px;
 }
+
+
 
 
 /*-----------------------------------------------------------------------------------*/

@@ -30,7 +30,15 @@
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/camera.js"></script>
   <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/sapphire.js"></script>
 
- 
+  <!--WOW-->
+  <link rel="stylesheet" type="text/css" href="{{asset('/public/assets/front')}}/js/plugin/wow/css/libs/animate.css">
+  <script src="{{asset('/public/assets/front')}}/js/plugin/wow/dist/wow.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            new WOW().init();
+        })
+    </script>
+
   @yield('script')
 </body>
 </html>

@@ -3,35 +3,40 @@
 @section('content')
     @include('Front::layouts.banner')
     <div class="row">
-	   <div class="col-md-3 left-menu">
+	   <div class="col-md-3 left-menu wow fadeInDown">
               <div class="wrap-left-menu">
                   <div class="box">
                     <h3 class="title-box">Sản Phẩm nổi bật</h3>
                     <div class="content-box">
+                        @if(!$hot_product->isEmpty())
                         <div class="swiper-container swiper-product">
                           <div class="swiper-wrapper">
+                             @foreach($hot_product as $item_hot)
                             <div class="swiper-slide">
-                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+                              <img src="{{asset('public/upload')}}/{{$item_hot->avatar_img}}" class="img-responsive" alt="{{$item_hot->title}}">
                             </div>
-                            <div class="swiper-slide">
-                              <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
-                            </div>
+                            @endforeach
                           </div>
                         </div>
+                        @endif
                     </div>
                   </div>
               </div>    <!-- end wrap-left-menu-->
+              @if(!$support->isEmpty())
               <div class="wrap-left-menu">
                   <div class="box">
                     <h3 class="title-box">Hỗ Trợ Khách Hàng</h3>
                     <div class="content-box">
-
+                        @foreach($support as $item_support)
+                        <div class="skype-button rounded" data-contact-id="{{$item_support->support_id}}">{{$item_support->name}}</div>
+                        @endforeach
                     </div>
                   </div>
               </div>    <!-- end wrap-left-menu-->
+              @endif
 		</div>    <!-- end left-menu-->
 
-  		<div class="col-md-9">
+  		<div class="col-md-9 wow fadeInUp">
         @if(!$product->isEmpty())
         @foreach($product->chunk(3) as $chunk)
   			<div class="row">
@@ -56,6 +61,8 @@
 @stop
 
 @section('script')
+    <!--SKYPE-->
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <!-- SWIPER -->
     <link rel="stylesheet" href="{{asset('/public/assets/front')}}/js/plugin/swiper/css/swiper.min.css">
     <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/plugin/swiper/js/swiper.jquery.min.js"></script>
@@ -105,7 +112,8 @@
 
           /** Swiper **/
           var productSwiper = new Swiper('.swiper-product',{
-
+                autoplay: 3500,
+                speed: 1500
           });
      });
     </script>

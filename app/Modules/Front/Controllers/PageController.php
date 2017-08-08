@@ -25,4 +25,10 @@ class PageController extends Controller
         $product = $this->productRepo->getProductOnHome();
         return view('Front::pages.home', compact ('product'));
     }
+
+    public function about()
+    {
+        $about = $this->pageRepo->firstByField('slug','about', ['content']);
+        return view('Front::pages.about', compact('about'));
+    }
 }

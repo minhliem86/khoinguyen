@@ -12,42 +12,55 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 wow fadeInLeft">
     <div class="contact_form">
-      <form action="" method="POST" class="form">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(!Session::has('success'))
+      <form action="{{route('front.contact.post')}}" method="POST" class="form">
           {{ csrf_field() }}
         <fieldset class="form-group">
           <label>Tên Khách Hàng<span class="required">*</span></label>
-          <input type="text" placeholder="fullname" class="form-control">
+          <input type="text" placeholder="Họ tên khách hàng" class="form-control" name="fullname">
           <label>Điện thoại<span class="required">*</span></label>
-          <input type="text" placeholder="phone" class="form-control">
+          <input type="text" placeholder="Điện thoại" class="form-control" name="phone">
           <label>Email<span class="required">*</span></label>
-          <input type="text" placeholder="Email" class="form-control">
+          <input type="text" placeholder="Email" class="form-control" name="email">
 
         </fieldset>
+        <div class="form-group">
+          <label>Lời Nhắn</label>
+          <textarea rows="3" class="form-control" name="message"></textarea>
+        </div>
+        <p class="form-group">
+          <button class="btn btn-primary" type="submit">Gửi</button>
+        </p>
       </form>
-      <div class="form-group">
-        <label>Lời Nhắn<span class="required">*</span></label>
-        <textarea rows="3" class="form-control"></textarea>
-      </div>
-      <p class="form-group">
-        <button class="btn btn-primary" type="submit">Gửi</button>
-      </p>
+      @else
+          <p class="text_thank">Cảm ơn bạn đã gửi lời nhắn cho chúng tôi.</p>
+          <p class="text_thank">Chúng tôi sẽ kiểm tra yêu cầu và liên lạc lại với bạn trong thời gian sớm nhất.</p>
+      @endif
     </div>
+
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 wow fadeInRight">
     <div class="location">
       <address>
-        <strong>Twitter, Inc.</strong><br>
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890
+        <strong>Inox KHÔI NGUYÊN, Ltd.</strong><br>
+        @if($company)
+        {{$company->address}}<br>
+        <abbr title="Phone">P:</abbr> {{$company->phone}}<br/>
+        <abbr title="Email">E:</abbr> {{$company->email}}
+        @endif
       </address>
 
-      <address>
-        <strong>Full Name</strong><br>
-        <a href="mailto:#">first.last@example.com</a>
-      </address>
     </div>
   </div>
 </div>

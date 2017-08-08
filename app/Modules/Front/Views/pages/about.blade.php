@@ -6,14 +6,14 @@
     @include('Front::layouts.banner')
     <div class="row">
         <div class="col-md-12">
-                <div class="wrap-about">
+                <div class="wrap-about wow fadeInUp">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4">
-
+                                <img src="{{asset('public/assets/front/images/about-us.jpg')}}" class="img-responsive" alt="Giới thiệu công ty Inox Khôi Nguyên">
                             </div>
                             <div class="col-md-8">
-                                <p class="text_about">At mea expetendis percipitur, error doctus argumentum ex qui, officiis adipiscing signiferumque te eam. At quodsi civibus vis, his ad dicat minim appetere, omnes principes ex mel. Ex liber audire maiestatis mel, no nam mandamus omittantur. Ad vim illud utroque. Ex vim inani volumus, everti admodum appareat an usu, propriae vivendum et sea.</p>
+                                {!!$about->content ? $about->content : '' !!}
                             </div>
                         </div>
                     </div>

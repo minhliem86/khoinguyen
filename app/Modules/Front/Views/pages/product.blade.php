@@ -4,102 +4,75 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3 left-menu">
+        <div class="col-md-3 left-menu wow fadeInDown">
                <div class="wrap-left-menu">
                    <div class="box">
                      <h3 class="title-box">Sản Phẩm nổi bật</h3>
                      <div class="content-box">
+                         @if(!$hot_product->isEmpty())
                          <div class="swiper-container swiper-product">
                            <div class="swiper-wrapper">
+                              @foreach($hot_product as $item_hot)
                              <div class="swiper-slide">
-                               <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
+                               <img src="{{asset('public/upload')}}/{{$item_hot->avatar_img}}" class="img-responsive" alt="{{$item_hot->title}}">
                              </div>
-                             <div class="swiper-slide">
-                               <img src="{{asset('/public/assets/front')}}/image/banner.png" class="img-responsive" alt="">
-                             </div>
+                             @endforeach
                            </div>
                          </div>
+                         @endif
                      </div>
                    </div>
                </div>    <!-- end wrap-left-menu-->
+               @if(!$support->isEmpty())
                <div class="wrap-left-menu">
                    <div class="box">
                      <h3 class="title-box">Hỗ Trợ Khách Hàng</h3>
                      <div class="content-box">
-
+                         @foreach($support as $item_support)
+                         <div class="skype-button rounded" data-contact-id="{{$item_support->support_id}}">{{$item_support->name}}</div>
+                         @endforeach
                      </div>
                    </div>
                </div>    <!-- end wrap-left-menu-->
-         </div>    <!-- end left-menu-->
+               @endif
+ 		</div>    <!-- end left-menu-->
 
         <div class="col-md-9">
             @include('Front::layouts.banner')
+            @if(!$product->isEmpty())
+            @foreach($product->chunk(3) as $chunk)
             <div class="row">
+                @foreach($chunk as $item_product)
                 <div class="col-md-4">
                     <div class="product each-product">
-                        <a href="product.html"><img alt="dress1" src="{{asset('/public/assets/front')}}/products/dress1home.jpg"></a>
+                        <a href="{{route('front.product.detail', $item_product->slug)}}"><img alt="{{$item_product->title}}" src="{{asset('/public/upload')}}/{{$item_product->avatar_img}}"></a>
                         <div class="name">
-                        <a href="">Elegant Dress</a>
+                        <a href="{{route('front.product.detail',$item_product->slug)}}">{{$item_product->title}}</a>
                         </div>
                         <div class="price">
-                            <p>$200.00</p>
+                            <p>{{number_format($item_product->price)}} VND</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="product each-product">
-                        <a href="product.html"><img alt="dress1" src="{{asset('/public/assets/front')}}/products/dress1home.jpg"></a>
-                        <div class="name">
-                        <a href="">Elegant Dress</a>
-                        </div>
-                        <div class="price">
-                            <p>$200.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product each-product">
-                        <a href="product.html"><img alt="dress1" src="{{asset('/public/assets/front')}}/products/dress1home.jpg"></a>
-                        <div class="name">
-                        <a href="">Elegant Dress</a>
-                        </div>
-                        <div class="price">
-                            <p>$200.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product each-product">
-                        <a href="product.html"><img alt="dress1" src="{{asset('/public/assets/front')}}/products/dress1home.jpg"></a>
-                        <div class="name">
-                        <a href="">Elegant Dress</a>
-                        </div>
-                        <div class="price">
-                            <p>$200.00</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+            @endforeach
+            @endif
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <ul class="pagination pull-right">
-              <li><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
+            @include('Front::paginations.customize',['paginator'=>$product])
+            
         </div>
     </div>
 @stop
 
 
 @section('script')
+    <!--SKYPE-->
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <!-- SWIPER -->
     <link rel="stylesheet" href="{{asset('/public/assets/front')}}/js/plugin/swiper/css/swiper.min.css">
     <script type="text/javascript" src="{{asset('/public/assets/front')}}/js/plugin/swiper/js/swiper.jquery.min.js"></script>
@@ -149,7 +122,8 @@
 
           /** Swiper **/
           var productSwiper = new Swiper('.swiper-product',{
-
+              autoplay: 3500,
+              speed: 1500
           });
      });
     </script>
