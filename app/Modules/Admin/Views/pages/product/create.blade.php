@@ -48,7 +48,32 @@
               <div class="col-md-10">
                 <input type="file" name="thumb-input[]" id="thumb-input" multiple >
               </div>
-
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Keywords</label>
+            <div class="col-md-10">
+              {{Form::text('meta_keywords',old('meta_keywords'), ['class'=>'form-control', 'placeholder'=>'Keywords'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Description</label>
+            <div class="col-md-10">
+              {{Form::text('meta_description',old('meta_description'), ['class'=>'form-control', 'placeholder'=>'Description'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Image</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                 <span class="input-group-btn">
+                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                     <i class="fa fa-picture-o"></i> Chọn
+                   </a>
+                 </span>
+                 <input id="thumbnail" class="form-control" type="hidden" name="meta_image">
+                </div>
+                <img id="holder" style="margin-top:15px;max-height:100px;">
+            </div>
           </div>
         </form>
       </div>

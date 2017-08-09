@@ -101,12 +101,20 @@ class ProductController extends Controller
         }else{
           $img_url = "";
         }
+        if($request->has('meta_images')){
+            $meta_img = $this->common->getPath($request->input('meta_images'));
+        }else{
+          $meta_img = "";
+        }
         $order = $this->productRepo->getOrder();
         $data = [
             'title' => $request->input('title'),
             'slug' => \LP_lib::unicode($request->input('title')),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
+            'meta_keywords' => $request->input('meta_keywords'),
+            'meta_description' => $request->input('meta_description'),
+            'meta_images' => $meta_img,
             'avatar_img' => $img_url,
             'order' => $order,
             'category_id' => 1,
@@ -163,6 +171,8 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $img_url = $this->common->getPath($request->input('avatar_img'));
+        $meta_image = $this->common->getPath($request->input('meta_image'));
+
         $data = [
                 'title' => $request->input('title'),
                 'slug' => \LP_lib::unicode($request->input('title')),
@@ -170,6 +180,9 @@ class ProductController extends Controller
                 'price' => $request->input('price'),
                 'category_id' => 1,
                 'avatar_img' => $img_url,
+                'meta_keywords' => $request->input('meta_keywords'),
+                'meta_description' => $request->input('meta_description'),
+                'meta_images' => $meta_img,
                 'order' => $request->input('order'),
                 'status' => $request->input('status'),
         ];

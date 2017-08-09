@@ -90,6 +90,32 @@
                 <input type="file" name="thumb-input[]" id="thumb-input" multiple >
               </div>
           </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Keywords</label>
+            <div class="col-md-10">
+              {{Form::text('meta_keywords',old('meta_keywords'), ['class'=>'form-control', 'placeholder'=>'Keywords'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Description</label>
+            <div class="col-md-10">
+              {{Form::text('meta_description',old('meta_description'), ['class'=>'form-control', 'placeholder'=>'Description'])}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Hình ảnh:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                 <span class="input-group-btn">
+                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                     <i class="fa fa-picture-o"></i> Chọn
+                   </a>
+                 </span>
+                 {{Form::hidden('meta_image',old('meta_image'), ['class'=>'form-control', 'id'=>'thumbnail' ])}}
+                </div>
+                <img id="holder" style="margin-top:15px;max-height:100px;" src="{{asset('public/upload/'.$inst->meta_image)}}">
+            </div>
+          </div>
         </form>
       </div>
     </div>

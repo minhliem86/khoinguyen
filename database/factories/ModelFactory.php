@@ -48,8 +48,8 @@ $factory->define(App\Models\Product::class, function(Faker $faker){
   return [
     'title' => $faker->word,
     'description' => $faker->paragraph(),
-    'price' =>    $faker->randomNumber(5),
-    'avatar_img' => $faker->imageUrl(300, 250),
+    'price' =>    $faker->randomNumber(8),
+    'avatar_img' => 'photos/1/product/inox01.jpg',
   ];
 });
 $factory->define('App\Models\Company', function(Faker $faker){
