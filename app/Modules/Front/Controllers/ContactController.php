@@ -48,7 +48,7 @@ class ContactController extends Controller
                 'fullname' => $request->input('fullname'),
                 'phone' => $request->input('phone'),
                 'email' => $request->input('email'),
-                'message' => $request->input('message'),
+                'messages' => $request->input('message'),
             ];
             $this->contact->create($data);
 

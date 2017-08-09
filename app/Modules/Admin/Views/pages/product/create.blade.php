@@ -66,7 +66,7 @@
             <div class="col-md-10">
                 <div class="input-group">
                  <span class="input-group-btn">
-                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                   <a id="lfm-meta" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                      <i class="fa fa-picture-o"></i> Chọn
                    </a>
                  </span>
@@ -95,6 +95,7 @@
         init_tinymce(url);
         // BUTTON ALONE
         init_btnImage(url,'#lfm');
+        init_btnImage(url,'#lfm-meta');
         // SUBMIT FORM
         function submitForm(){
          $('form').submit();

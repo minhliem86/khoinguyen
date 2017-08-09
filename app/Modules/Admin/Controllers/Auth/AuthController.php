@@ -57,6 +57,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'role_id' => 'required'
         ]);
     }
 
@@ -81,7 +82,8 @@ class AuthController extends Controller
 
     // Register
     public function showRegistrationForm(){
-      return view('Admin::auth.register');
+        $role = \App\Models\Role::lists('name', 'id')->toArray();
+      return view('Admin::auth.register', compact('role'));
     }
 
     public function register(Request $request)
@@ -94,7 +96,7 @@ class AuthController extends Controller
             );
         }
         $user = $this->create($request->all());
-        $role = Role::findOrFail(1);
+        $role = Role::findOrFail($request->input('role_id'));
         $user->attachRole($role);
 
         $this->auth->login($user);

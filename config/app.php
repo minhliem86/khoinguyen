@@ -166,6 +166,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         \Krucas\Notification\NotificationServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        developeruz\Analytics\AnalyticsServiceProvider::class,
     ],
 
     /*
@@ -216,6 +217,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Analytics' => developeruz\Analytics\AnalyticsFacade::class,
     ],
 
 ];

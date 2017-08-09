@@ -13,7 +13,9 @@
                                 <img src="{{asset('public/assets/front/images/about-us.jpg')}}" class="img-responsive" alt="Giới thiệu công ty Inox Khôi Nguyên">
                             </div>
                             <div class="col-md-8">
-                                {!!$about->content ? $about->content : '' !!}
+                                @if($about)
+                                {!! $about->content ? $about->content : '' !!}
+                                @endif
                             </div>
                         </div>
                     </div>

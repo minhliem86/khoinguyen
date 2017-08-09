@@ -40,7 +40,7 @@ $factory->define(App\Models\Photo::class, function(Faker $faker){
 
 $factory->define(App\Models\Category::class, function(Faker $faker){
   return [
-    'title' => $faker->word,
+    'title' => 'general',
     'avatar_img' => $faker->imageUrl(300, 250),
   ];
 });

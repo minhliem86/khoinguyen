@@ -64,6 +64,14 @@
           </div>
         </div>
         <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class=" glyphicon glyphicon-user "></i>
+            </div>
+            {{Form::select('role_id', ['' => 'Chọn role'] + $role, '',['class' => 'form-control', 'required'] ) }}
+          </div>
+        </div>
+        <div class="form-group">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </div>
         @if($errors->any())
