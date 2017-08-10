@@ -15,6 +15,7 @@ class CompanyComposer
 	  public function compose(View $view)
     {
       $company_info = $this->company->getFirst();
-      $view->with(['company'=>$company_info]);
+      $location = explode(',', $company_info->map);
+      $view->with(['company'=>$company_info, 'location' => $location]);
     }
 }

@@ -40,7 +40,7 @@
           </div>
           <script>
             function initMap() {
-              var pos = {lat: {{ $company ? json_decode($company->map)[0] : '10.8571501'}}, lng: {{$company ? json_decode($company->map)[1] : '106.6390513'}}};
+              var pos = {lat: {{ count($location) ? $location[0] : '10.8571501'}}, lng: {{ count($location) ? $location[1] : '106.6390513'}}};
               @if(request()->segment(1) === 'lien-he')
               var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 17,
