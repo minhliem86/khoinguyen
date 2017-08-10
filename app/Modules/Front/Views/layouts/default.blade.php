@@ -3,6 +3,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    @yield('meta')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/assets/front')}}/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/public/assets/front')}}/css/bootstrap-select.css">
   	<link href='http://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700&subset=vietnamese' rel='stylesheet' type='text/css'/>

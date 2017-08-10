@@ -7,8 +7,8 @@
           @if($company)
           <ul>
             <li>{{$company->address}}</li>
-            <li>Điện thoại: {{$company->phone}}</li>
-            <li>Email: <a href="mailto:{{$company->email}}">{{$company->email}}</a></li>
+            <li>Điện thoại: <br/>{!!$company->phone!!}</li>
+            <li>Email: <a href="mailto:{!!$company->email!!}">{{$company->email}}</a></li>
           </ul>
           @endif
         </div>

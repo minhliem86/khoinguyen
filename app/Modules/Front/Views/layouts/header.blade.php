@@ -17,11 +17,11 @@
         <li class="{{LP_lib::setActive(1,'san-pham')}}"><a href="{{route('front.product')}}">Sản phẩm</a></li>
         <li class="{{LP_lib::setActive(1,'lien-he')}}"><a href="{{route('front.contact.index')}}">Liên hệ</a></li>
       </ul>
-      <form action="/" class="navbar-form navbar-search navbar-right" role="search">
+      <!-- <form action="/" class="navbar-form navbar-search navbar-right" role="search">
         <div class="input-group">
           <input type="text" name="search" placeholder="Search" class="search-query col-md-2"><button type="submit" class="btn btn-default icon-search"></button>
         </div>
-      </form>
+      </form> -->
     </div><!-- /.navbar-collapse -->
   </nav>
 </div>  <!-- end header -->

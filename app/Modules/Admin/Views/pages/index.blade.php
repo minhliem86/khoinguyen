@@ -38,7 +38,7 @@
                 </div>
                 <div class="panel-body-dashboard">
                     <div class="wrap-icon text-center">
-                        <i class="fa  fa-bullhorn"></i>
+                        <i class="fa fa-envelope-o"></i>
                         <h5><span class="badge badge-info badge-md">{{$number_contact}}</span> Ý kiến</h5>
                     </div>
                 </div>

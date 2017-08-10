@@ -56,7 +56,7 @@
         <strong>Inox KHÔI NGUYÊN, Ltd.</strong><br>
         @if($company)
         {{$company->address}}<br>
-        <abbr title="Phone">P:</abbr> {{$company->phone}}<br/>
+        <abbr title="Phone">P:</abbr> {!!$company->phone!!}<br/>
         <abbr title="Email">E:</abbr> {{$company->email}}
         @endif
       </address>
